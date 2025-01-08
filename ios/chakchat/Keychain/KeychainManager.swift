@@ -7,11 +7,13 @@
 
 import Foundation
 
-final class KeychainManager {
+final class KeychainManager: KeychainManagerBusinessLogic {
     
     // Save data to Keychain
-    func save(key: String, value: String) -> Bool {
-        guard let data = value.data(using: .utf8) else { return false }
+    func save(key: String, value: UUID) -> Bool {
+        let valueString = value.uuidString
+        
+        guard let data = valueString.data(using: .utf8) else { return false }
         
         // Create query
         let query: [String: Any] = [
@@ -29,7 +31,7 @@ final class KeychainManager {
     }
     
     // Retrieve data from Keychain
-    func get(key: String) -> String? {
+    func get(key: String) -> UUID? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
@@ -40,8 +42,9 @@ final class KeychainManager {
         var dataTypeRef: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
         
-        guard status == errSecSuccess, let data = dataTypeRef as? Data else { return nil }
-        return String(data: data, encoding: .utf8)
+        guard status == errSecSuccess, let data = dataTypeRef as? Data,
+              let valueString = String(data: data, encoding: .utf8) else { return nil }
+        return UUID(uuidString: valueString)
     }
     
     // Delete data from Keychain
