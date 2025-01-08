@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol VerifyBusinessLogic {
-    
+    func sendVerificationRequest(_ code: String)
 }
 
 protocol VerifyPresentationLogic {
@@ -17,5 +17,7 @@ protocol VerifyPresentationLogic {
 }
 
 protocol VerifyWorkerLogic {
-    
+    func sendRequest(_ request: Verify.SendVerifyCodeRequest,
+                     completion: @escaping (Result<Void, Error>) -> Void)
+    func getVerifyCode() -> UUID?
 }

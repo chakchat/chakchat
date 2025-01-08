@@ -12,7 +12,9 @@ enum VerifyAssembly {
     static func build() -> UIViewController {
         let presentor = VerifyPresenter()
         
-        let worker = VerifyWorker()
+        let keychainManager = KeychainManager()
+        
+        let worker = VerifyWorker(keychainManager: keychainManager)
         
         let interactor = VerifyInteractor(presentor: presentor, worker: worker)
         let view = VerifyViewController(interactor: interactor)
