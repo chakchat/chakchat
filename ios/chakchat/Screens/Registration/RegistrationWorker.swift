@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 final class RegistrationWorker: RegistrationWorkerLogic {
-    private let registrationService: RegistrationServiceLogic
     
-    init(registrationService: RegistrationServiceLogic) {
+    enum Constants {
+        static let keyForSaveVerificationCode: String = "verificationCode"
+    }
+    
+    private let registrationService: RegistrationServiceLogic
+    private let keychainManager: KeychainManagerBusinessLogic
+    
+    init(registrationService: RegistrationServiceLogic, keychainManager: KeychainManager) {
         self.registrationService = registrationService
+        self.keychainManager = keychainManager
     }
     
     func sendRequest(_ request: Registration.SendCodeRequest) {
@@ -21,7 +28,13 @@ final class RegistrationWorker: RegistrationWorkerLogic {
                 switch result {
                 case .success(let signinKey):
                     print("Прислал код: \(signinKey)")
-                    // Switch to input code screen
+                    let isSaved = self.keychainManager.save(key: Constants.keyForSaveVerificationCode,
+                                                       value: signinKey)
+                    if isSaved {
+                        print("Verification code is saved")
+                    } else {
+                        print("Verification code isn't saved")
+                    }
                 case .failure(let error):
                     print("Ошибка: \(error)")
                     // Start to cry

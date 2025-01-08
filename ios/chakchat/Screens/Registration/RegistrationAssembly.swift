@@ -13,7 +13,10 @@ enum RegistrationAssembly {
         let presenter = RegistrationPresenter()
         
         let registrationService = RegistrationService()
-        let worker = RegistrationWorker(registrationService: registrationService)
+        let keychainManager = KeychainManager()
+        
+        let worker = RegistrationWorker(registrationService: registrationService,
+                                        keychainManager: keychainManager)
         
         let interactor = RegistrationInteractor(presenter: presenter, worker: worker)
         let view = RegistrationViewController(interactor: interactor)
