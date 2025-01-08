@@ -9,6 +9,8 @@ import Foundation
 
 final class KeychainManager: KeychainManagerBusinessLogic {
     
+    static let keyForSaveVerificationCode: String = "verificationCode"
+    
     // Save data to Keychain
     func save(key: String, value: UUID) -> Bool {
         let valueString = value.uuidString
