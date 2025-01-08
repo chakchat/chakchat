@@ -52,14 +52,14 @@ final class RegistrationService: RegistrationServiceLogic {
             switch httpResponse.statusCode {
             case 200:
                 do {
-                    let response = try JSONDecoder().decode(SuccessResponse.self, from: data)
-                    completion(.success(response.signinKey))
+                    let response = try JSONDecoder().decode(Registration.SuccessResponse.self, from: data)
+                    completion(.success(response.signupKey))
                 } catch {
                     completion(.failure(error))
                 }
             case 400:
                 do {
-                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                    let errorResponse = try JSONDecoder().decode(ErrorModels.ErrorResponse.self, from: data)
                     completion(.failure(RegistrationError.dontKnow))
                 } catch {
                     completion(.failure(error))
@@ -70,27 +70,7 @@ final class RegistrationService: RegistrationServiceLogic {
         }.resume()
     }
 }
-// Удали это и в строчке 55 используй модель из Registration.SendCodeResponse
-struct SuccessResponse: Codable {
-    let signinKey: UUID
-    
-    enum CodingKeys: String, CodingKey {
-        case signinKey = "signin_key"
-    }
-}
-// Аналогично здесь, создай такую же структуру но в Registration!!!
-struct ErrorResponse: Codable {
-    let errorType: String
-    let errorMessage: String
-    let errorDetails: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case errorType = "error_type"
-        case errorMessage = "error_message"
-        case errorDetails = "error_details"
-    }
-}
-// Возможно здесь тоже надо, но не факт
+
 enum RegistrationError: Error {
     case invalidURL
     case invalidResponse
