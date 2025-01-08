@@ -33,6 +33,8 @@
 		AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B624D2D2EC7C50064CB23 /* VerifyViewController.swift */; };
 		AA9B62502D2EC7D10064CB23 /* VerifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B624F2D2EC7D10064CB23 /* VerifyModels.swift */; };
 		AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */; };
+		AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62562D2EDF900064CB23 /* SuccessModels.swift */; };
+		AA9B62592D2EDF9F0064CB23 /* ErrorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		AA9B624D2D2EC7C50064CB23 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		AA9B624F2D2EC7D10064CB23 /* VerifyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyModels.swift; sourceTree = "<group>"; };
 		AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProtocols.swift; sourceTree = "<group>"; };
+		AA9B62562D2EDF900064CB23 /* SuccessModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModels.swift; sourceTree = "<group>"; };
+		AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 		AA9B62062D2D47CB0064CB23 /* chakchat */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B62542D2EDF700064CB23 /* Networking */,
 				AA9B623F2D2EC0010064CB23 /* Keychain */,
 				AA9B62372D2D75050064CB23 /* Services */,
 				AA9B62302D2D71580064CB23 /* Validators */,
@@ -191,6 +196,23 @@
 			path = VerifyCode;
 			sourceTree = "<group>";
 		};
+		AA9B62542D2EDF700064CB23 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62552D2EDF810064CB23 /* ResponseModels */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AA9B62552D2EDF810064CB23 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62562D2EDF900064CB23 /* SuccessModels.swift */,
+				AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +295,7 @@
 				AA9B62502D2EC7D10064CB23 /* VerifyModels.swift in Sources */,
 				AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */,
 				AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */,
+				AA9B62592D2EDF9F0064CB23 /* ErrorModels.swift in Sources */,
 				AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */,
 				AA9B62082D2D47CB0064CB23 /* AppDelegate.swift in Sources */,
 				AA9B62272D2D6C810064CB23 /* RegistrationInteractor.swift in Sources */,
@@ -280,6 +303,7 @@
 				AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */,
 				AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */,
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
+				AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */,
 				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
 				AA9B62202D2D5F790064CB23 /* StartViewController.swift in Sources */,
 				AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */,
