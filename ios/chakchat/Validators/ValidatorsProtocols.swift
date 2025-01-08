@@ -10,3 +10,7 @@ import UIKit
 protocol RegistrationValidator {
     func validate(_ value: String) -> Bool
 }
+
+protocol VerificationValidator {
+    func validate(_ value: String) -> Bool
+}

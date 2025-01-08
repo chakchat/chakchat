@@ -35,6 +35,7 @@
 		AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */; };
 		AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62562D2EDF900064CB23 /* SuccessModels.swift */; };
 		AA9B62592D2EDF9F0064CB23 /* ErrorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */; };
+		AA9B625B2D2EE5620064CB23 /* VerificationCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B625A2D2EE5620064CB23 /* VerificationCodeValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProtocols.swift; sourceTree = "<group>"; };
 		AA9B62562D2EDF900064CB23 /* SuccessModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModels.swift; sourceTree = "<group>"; };
 		AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModels.swift; sourceTree = "<group>"; };
+		AA9B625A2D2EE5620064CB23 /* VerificationCodeValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				AA9B62312D2D71670064CB23 /* ValidatorsProtocols.swift */,
 				AA9B62332D2D71A30064CB23 /* RegistrationPhoneValidator.swift */,
+				AA9B625A2D2EE5620064CB23 /* VerificationCodeValidator.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */,
 				AA9B624C2D2EC7B40064CB23 /* VerifyWorker.swift in Sources */,
 				AA9B622D2D2D6CAE0064CB23 /* RegistrationModels.swift in Sources */,
+				AA9B625B2D2EE5620064CB23 /* VerificationCodeValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
