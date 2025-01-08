@@ -1,24 +1,26 @@
 //
-//  RegistrationModel.swift
+//  VerifyModels.swift
 //  chakchat
 //
-//  Created by Кирилл Исаев on 07.01.2025.
+//  Created by Кирилл Исаев on 08.01.2025.
 //
 
 import Foundation
 import UIKit
-enum Registration {
+enum Verify {
     
-    struct SendCodeRequest: Codable {
-        let phone: String
-    }
-    
-    struct SuccessResponse: Codable {
+    struct SendVerifyCodeRequest: Codable {
         let signupKey: UUID
+        let code: String
         
         enum CodingKeys: String, CodingKey {
             case signupKey = "signup_key"
+            case code = "code"
         }
+    }
+    
+    struct SuccessResponse: Codable {
+        
     }
     
     struct ErrorResponse: Codable {

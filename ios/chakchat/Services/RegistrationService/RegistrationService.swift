@@ -70,7 +70,7 @@ final class RegistrationService: RegistrationServiceLogic {
         }.resume()
     }
 }
-
+// Удали это и в строчке 55 используй модель из Registration.SendCodeResponse
 struct SuccessResponse: Codable {
     let signinKey: UUID
     
@@ -78,7 +78,7 @@ struct SuccessResponse: Codable {
         case signinKey = "signin_key"
     }
 }
-
+// Аналогично здесь, создай такую же структуру но в Registration!!!
 struct ErrorResponse: Codable {
     let errorType: String
     let errorMessage: String
@@ -90,6 +90,7 @@ struct ErrorResponse: Codable {
         case errorDetails = "error_details"
     }
 }
+// Возможно здесь тоже надо, но не факт
 enum RegistrationError: Error {
     case invalidURL
     case invalidResponse

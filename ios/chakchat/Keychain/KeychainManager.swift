@@ -59,3 +59,9 @@ final class KeychainManager: KeychainManagerBusinessLogic {
     }
 }
 
+enum Keychain {
+    enum KeychainError: Error {
+        case saveError
+    }
+}
+
