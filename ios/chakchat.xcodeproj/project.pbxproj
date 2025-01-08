@@ -24,6 +24,8 @@
 		AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62352D2D72E30064CB23 /* RegistrationWorker.swift */; };
 		AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */; };
 		AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B623D2D2D75890064CB23 /* RegistrationService.swift */; };
+		AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62402D2EC0170064CB23 /* KeychainManager.swift */; };
+		AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		AA9B62352D2D72E30064CB23 /* RegistrationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWorker.swift; sourceTree = "<group>"; };
 		AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceProtocols.swift; sourceTree = "<group>"; };
 		AA9B623D2D2D75890064CB23 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		AA9B62402D2EC0170064CB23 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		AA9B62062D2D47CB0064CB23 /* chakchat */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B623F2D2EC0010064CB23 /* Keychain */,
 				AA9B62372D2D75050064CB23 /* Services */,
 				AA9B62302D2D71580064CB23 /* Validators */,
 				AA9B62212D2D5FFE0064CB23 /* Extensions */,
@@ -146,6 +151,15 @@
 				AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */,
 			);
 			path = RegistrationService;
+			sourceTree = "<group>";
+		};
+		AA9B623F2D2EC0010064CB23 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62402D2EC0170064CB23 /* KeychainManager.swift */,
+				AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,9 +239,11 @@
 				AA9B622B2D2D6CA40064CB23 /* RegistrationViewController.swift in Sources */,
 				AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */,
 				AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */,
+				AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */,
 				AA9B62082D2D47CB0064CB23 /* AppDelegate.swift in Sources */,
 				AA9B62272D2D6C810064CB23 /* RegistrationInteractor.swift in Sources */,
 				AA9B622F2D2D6CB90064CB23 /* RegistrationProtocols.swift in Sources */,
+				AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */,
 				AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */,
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
 				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
