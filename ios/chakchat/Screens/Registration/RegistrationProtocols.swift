@@ -13,9 +13,11 @@ protocol RegistrationBusinessLogic {
 }
 
 protocol RegistrationPresentationLogic {
-    
+    func routeToVerifyScreen()
+    func showError(_ error: Error)
 }
 
 protocol RegistrationWorkerLogic {
-    func sendRequest(_ request: Registration.SendCodeRequest)
+    func sendRequest(_ request: Registration.SendCodeRequest,
+                     completion: @escaping (Result<Void, Error>) -> Void)
 }

@@ -26,6 +26,13 @@
 		AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B623D2D2D75890064CB23 /* RegistrationService.swift */; };
 		AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62402D2EC0170064CB23 /* KeychainManager.swift */; };
 		AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */; };
+		AA9B62462D2EC77F0064CB23 /* VerifyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62452D2EC77F0064CB23 /* VerifyAssembly.swift */; };
+		AA9B62482D2EC78F0064CB23 /* VerifyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62472D2EC78F0064CB23 /* VerifyInteractor.swift */; };
+		AA9B624A2D2EC7A90064CB23 /* VerifyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62492D2EC7A90064CB23 /* VerifyPresenter.swift */; };
+		AA9B624C2D2EC7B40064CB23 /* VerifyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B624B2D2EC7B40064CB23 /* VerifyWorker.swift */; };
+		AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B624D2D2EC7C50064CB23 /* VerifyViewController.swift */; };
+		AA9B62502D2EC7D10064CB23 /* VerifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B624F2D2EC7D10064CB23 /* VerifyModels.swift */; };
+		AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +57,13 @@
 		AA9B623D2D2D75890064CB23 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		AA9B62402D2EC0170064CB23 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerProtocol.swift; sourceTree = "<group>"; };
+		AA9B62452D2EC77F0064CB23 /* VerifyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAssembly.swift; sourceTree = "<group>"; };
+		AA9B62472D2EC78F0064CB23 /* VerifyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyInteractor.swift; sourceTree = "<group>"; };
+		AA9B62492D2EC7A90064CB23 /* VerifyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPresenter.swift; sourceTree = "<group>"; };
+		AA9B624B2D2EC7B40064CB23 /* VerifyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyWorker.swift; sourceTree = "<group>"; };
+		AA9B624D2D2EC7C50064CB23 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		AA9B624F2D2EC7D10064CB23 /* VerifyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyModels.swift; sourceTree = "<group>"; };
+		AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,7 @@
 		AA9B621D2D2D5E650064CB23 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B62442D2EC76A0064CB23 /* VerifyCode */,
 				AA9B621E2D2D5E790064CB23 /* Registration */,
 				AA9B621F2D2D5F790064CB23 /* StartViewController.swift */,
 			);
@@ -160,6 +175,20 @@
 				AA9B62422D2EC4840064CB23 /* KeychainManagerProtocol.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		AA9B62442D2EC76A0064CB23 /* VerifyCode */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62452D2EC77F0064CB23 /* VerifyAssembly.swift */,
+				AA9B62472D2EC78F0064CB23 /* VerifyInteractor.swift */,
+				AA9B624B2D2EC7B40064CB23 /* VerifyWorker.swift */,
+				AA9B62492D2EC7A90064CB23 /* VerifyPresenter.swift */,
+				AA9B624D2D2EC7C50064CB23 /* VerifyViewController.swift */,
+				AA9B624F2D2EC7D10064CB23 /* VerifyModels.swift */,
+				AA9B62512D2EC7DC0064CB23 /* VerifyProtocols.swift */,
+			);
+			path = VerifyCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,11 +262,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */,
+				AA9B62482D2EC78F0064CB23 /* VerifyInteractor.swift in Sources */,
 				AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */,
 				AA9B62292D2D6C970064CB23 /* RegistrationPresenter.swift in Sources */,
 				AA9B62252D2D6C490064CB23 /* RegistrationAssembly.swift in Sources */,
+				AA9B624A2D2EC7A90064CB23 /* VerifyPresenter.swift in Sources */,
 				AA9B622B2D2D6CA40064CB23 /* RegistrationViewController.swift in Sources */,
 				AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */,
+				AA9B62462D2EC77F0064CB23 /* VerifyAssembly.swift in Sources */,
+				AA9B62502D2EC7D10064CB23 /* VerifyModels.swift in Sources */,
+				AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */,
 				AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */,
 				AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */,
 				AA9B62082D2D47CB0064CB23 /* AppDelegate.swift in Sources */,
@@ -248,6 +282,8 @@
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
 				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
 				AA9B62202D2D5F790064CB23 /* StartViewController.swift in Sources */,
+				AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */,
+				AA9B624C2D2EC7B40064CB23 /* VerifyWorker.swift in Sources */,
 				AA9B622D2D2D6CAE0064CB23 /* RegistrationModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,22 +21,26 @@ final class RegistrationWorker: RegistrationWorkerLogic {
         self.keychainManager = keychainManager
     }
     
-    func sendRequest(_ request: Registration.SendCodeRequest) {
-        print("Отправил запрос сервису")
+    func sendRequest(_ request: Registration.SendCodeRequest,
+                     completion: @escaping (Result<Void, Error>) -> Void) {
+        print("Send request to server")
         registrationService.send(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let signinKey):
-                    print("Прислал код: \(signinKey)")
+                    print("Get code: \(signinKey)")
                     let isSaved = self.keychainManager.save(key: Constants.keyForSaveVerificationCode,
                                                        value: signinKey)
                     if isSaved {
                         print("Verification code is saved")
+                        completion(.success(())) // Move to verify code screen
                     } else {
                         print("Verification code isn't saved")
+                        completion(.failure((Keychain.KeychainError.saveError)))
                     }
                 case .failure(let error):
-                    print("Ошибка: \(error)")
+                    print("Error: \(error)")
+                    completion(.failure(error))
                     // Start to cry
                 }
             }
