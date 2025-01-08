@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 final class RegistrationWorker: RegistrationWorkerLogic {
     
-    enum Constants {
-        static let keyForSaveVerificationCode: String = "verificationCode"
-    }
-    
     private let registrationService: RegistrationServiceLogic
     private let keychainManager: KeychainManagerBusinessLogic
     
@@ -23,13 +19,13 @@ final class RegistrationWorker: RegistrationWorkerLogic {
     
     func sendRequest(_ request: Registration.SendCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void) {
-        print("Send request to server")
+        print("Send request to service")
         registrationService.send(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let signinKey):
                     print("Get code: \(signinKey)")
-                    let isSaved = self.keychainManager.save(key: Constants.keyForSaveVerificationCode,
+                    let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
                                                        value: signinKey)
                     if isSaved {
                         print("Verification code is saved")
