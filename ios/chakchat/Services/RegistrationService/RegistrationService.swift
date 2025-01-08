@@ -13,7 +13,7 @@ final class RegistrationService: RegistrationServiceLogic {
     
     func send(_ request: Registration.SendCodeRequest, 
               completion: @escaping (Result<UUID, Error>) -> Void) {
-        print("Отправил серверу запрос")
+        print("Send request to server")
         let phoneNumber = request.phone
 
         guard let url = URL(string: "\(baseUrl)/api/identity/v1.0/signin/send-phone-code") else {
