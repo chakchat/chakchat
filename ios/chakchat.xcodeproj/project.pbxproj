@@ -11,7 +11,19 @@
 		AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */; };
 		AA9B62112D2D47CE0064CB23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9B62102D2D47CE0064CB23 /* Assets.xcassets */; };
 		AA9B62142D2D47CE0064CB23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AA9B62132D2D47CE0064CB23 /* Base */; };
-		AA9B621C2D2D4C110064CB23 /* testVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B621B2D2D4C110064CB23 /* testVC.swift */; };
+		AA9B62202D2D5F790064CB23 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B621F2D2D5F790064CB23 /* StartViewController.swift */; };
+		AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62222D2D605A0064CB23 /* UIView + Pin.swift */; };
+		AA9B62252D2D6C490064CB23 /* RegistrationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62242D2D6C490064CB23 /* RegistrationAssembly.swift */; };
+		AA9B62272D2D6C810064CB23 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62262D2D6C810064CB23 /* RegistrationInteractor.swift */; };
+		AA9B62292D2D6C970064CB23 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62282D2D6C970064CB23 /* RegistrationPresenter.swift */; };
+		AA9B622B2D2D6CA40064CB23 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B622A2D2D6CA40064CB23 /* RegistrationViewController.swift */; };
+		AA9B622D2D2D6CAE0064CB23 /* RegistrationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B622C2D2D6CAE0064CB23 /* RegistrationModels.swift */; };
+		AA9B622F2D2D6CB90064CB23 /* RegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B622E2D2D6CB90064CB23 /* RegistrationProtocols.swift */; };
+		AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62312D2D71670064CB23 /* ValidatorsProtocols.swift */; };
+		AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62332D2D71A30064CB23 /* RegistrationPhoneValidator.swift */; };
+		AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62352D2D72E30064CB23 /* RegistrationWorker.swift */; };
+		AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */; };
+		AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B623D2D2D75890064CB23 /* RegistrationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +33,19 @@
 		AA9B62102D2D47CE0064CB23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA9B62132D2D47CE0064CB23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA9B62152D2D47CE0064CB23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA9B621B2D2D4C110064CB23 /* testVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testVC.swift; sourceTree = "<group>"; };
+		AA9B621F2D2D5F790064CB23 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AA9B62222D2D605A0064CB23 /* UIView + Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Pin.swift"; sourceTree = "<group>"; };
+		AA9B62242D2D6C490064CB23 /* RegistrationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAssembly.swift; sourceTree = "<group>"; };
+		AA9B62262D2D6C810064CB23 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		AA9B62282D2D6C970064CB23 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		AA9B622A2D2D6CA40064CB23 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		AA9B622C2D2D6CAE0064CB23 /* RegistrationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModels.swift; sourceTree = "<group>"; };
+		AA9B622E2D2D6CB90064CB23 /* RegistrationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProtocols.swift; sourceTree = "<group>"; };
+		AA9B62312D2D71670064CB23 /* ValidatorsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorsProtocols.swift; sourceTree = "<group>"; };
+		AA9B62332D2D71A30064CB23 /* RegistrationPhoneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneValidator.swift; sourceTree = "<group>"; };
+		AA9B62352D2D72E30064CB23 /* RegistrationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationWorker.swift; sourceTree = "<group>"; };
+		AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServiceProtocols.swift; sourceTree = "<group>"; };
+		AA9B623D2D2D75890064CB23 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +78,74 @@
 		AA9B62062D2D47CB0064CB23 /* chakchat */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B62372D2D75050064CB23 /* Services */,
+				AA9B62302D2D71580064CB23 /* Validators */,
+				AA9B62212D2D5FFE0064CB23 /* Extensions */,
+				AA9B621D2D2D5E650064CB23 /* Screens */,
 				AA9B62072D2D47CB0064CB23 /* AppDelegate.swift */,
 				AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */,
-				AA9B621B2D2D4C110064CB23 /* testVC.swift */,
 				AA9B62102D2D47CE0064CB23 /* Assets.xcassets */,
 				AA9B62122D2D47CE0064CB23 /* LaunchScreen.storyboard */,
 				AA9B62152D2D47CE0064CB23 /* Info.plist */,
 			);
 			path = chakchat;
+			sourceTree = "<group>";
+		};
+		AA9B621D2D2D5E650064CB23 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B621E2D2D5E790064CB23 /* Registration */,
+				AA9B621F2D2D5F790064CB23 /* StartViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AA9B621E2D2D5E790064CB23 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62242D2D6C490064CB23 /* RegistrationAssembly.swift */,
+				AA9B62262D2D6C810064CB23 /* RegistrationInteractor.swift */,
+				AA9B62352D2D72E30064CB23 /* RegistrationWorker.swift */,
+				AA9B62282D2D6C970064CB23 /* RegistrationPresenter.swift */,
+				AA9B622A2D2D6CA40064CB23 /* RegistrationViewController.swift */,
+				AA9B622C2D2D6CAE0064CB23 /* RegistrationModels.swift */,
+				AA9B622E2D2D6CB90064CB23 /* RegistrationProtocols.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		AA9B62212D2D5FFE0064CB23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62222D2D605A0064CB23 /* UIView + Pin.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA9B62302D2D71580064CB23 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62312D2D71670064CB23 /* ValidatorsProtocols.swift */,
+				AA9B62332D2D71A30064CB23 /* RegistrationPhoneValidator.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		AA9B62372D2D75050064CB23 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B623A2D2D75620064CB23 /* RegistrationService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA9B623A2D2D75620064CB23 /* RegistrationService */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B623D2D2D75890064CB23 /* RegistrationService.swift */,
+				AA9B623B2D2D75780064CB23 /* RegistrationServiceProtocols.swift */,
+			);
+			path = RegistrationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +218,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */,
+				AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */,
+				AA9B62292D2D6C970064CB23 /* RegistrationPresenter.swift in Sources */,
+				AA9B62252D2D6C490064CB23 /* RegistrationAssembly.swift in Sources */,
+				AA9B622B2D2D6CA40064CB23 /* RegistrationViewController.swift in Sources */,
+				AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */,
+				AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */,
 				AA9B62082D2D47CB0064CB23 /* AppDelegate.swift in Sources */,
+				AA9B62272D2D6C810064CB23 /* RegistrationInteractor.swift in Sources */,
+				AA9B622F2D2D6CB90064CB23 /* RegistrationProtocols.swift in Sources */,
+				AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */,
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
-				AA9B621C2D2D4C110064CB23 /* testVC.swift in Sources */,
+				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
+				AA9B62202D2D5F790064CB23 /* StartViewController.swift in Sources */,
+				AA9B622D2D2D6CAE0064CB23 /* RegistrationModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +383,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +411,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
