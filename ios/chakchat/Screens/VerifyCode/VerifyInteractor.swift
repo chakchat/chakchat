@@ -19,19 +19,23 @@ final class VerifyInteractor: VerifyBusinessLogic {
     
     func sendVerificationRequest(_ code: String) {
         print("Send request to worker")
+        /*
         let signupKey: UUID? = worker.getVerifyCode()
         if signupKey != nil {
             worker.sendRequest(Verify.SendVerifyCodeRequest(signupKey: signupKey!, code: code)) { result in
                 switch result {
                 case .success:
                     print("Succes")
-                    // Route to verify code screen
+                    self.presentor.routeToSignupScreen()
                 case .failure(let error):
                     print("Error: \(error)")
+                    self.presentor.showError(error)
                 }
             }
         } else {
             print("Cant find signupKey in keychain")
         }
+         */
+        presentor.routeToSignupScreen()
     }
 }
