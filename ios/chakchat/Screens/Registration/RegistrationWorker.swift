@@ -24,8 +24,18 @@ final class RegistrationWorker: RegistrationWorkerLogic {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let signinKey):
+                    print("Save current phone number")
+                    var isSaved = self.keychainManager.save(key: KeychainManager.keyForSavePhoneNumber,
+                                                            value: request.phone)
+                    if isSaved {
+                        print("Phone number is saved")
+                    } else {
+                        print("Something went wrong, phone numbers isnt saved in keychain storage!")
+                        completion(.failure(Keychain.KeychainError.saveError))
+                    }
+                    
                     print("Get code: \(signinKey)")
-                    let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
+                    isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
                                                        value: signinKey)
                     if isSaved {
                         print("Verification code is saved")
