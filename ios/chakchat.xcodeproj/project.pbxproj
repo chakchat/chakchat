@@ -102,14 +102,13 @@
 		AA9B62062D2D47CB0064CB23 /* chakchat */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B625C2D2FC5410064CB23 /* Common */,
 				AA9B62542D2EDF700064CB23 /* Networking */,
 				AA9B623F2D2EC0010064CB23 /* Keychain */,
 				AA9B62372D2D75050064CB23 /* Services */,
 				AA9B62302D2D71580064CB23 /* Validators */,
 				AA9B62212D2D5FFE0064CB23 /* Extensions */,
 				AA9B621D2D2D5E650064CB23 /* Screens */,
-				AA9B62072D2D47CB0064CB23 /* AppDelegate.swift */,
-				AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */,
 				AA9B62102D2D47CE0064CB23 /* Assets.xcassets */,
 				AA9B62122D2D47CE0064CB23 /* LaunchScreen.storyboard */,
 				AA9B62152D2D47CE0064CB23 /* Info.plist */,
@@ -214,6 +213,15 @@
 				AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		AA9B625C2D2FC5410064CB23 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62072D2D47CB0064CB23 /* AppDelegate.swift */,
+				AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

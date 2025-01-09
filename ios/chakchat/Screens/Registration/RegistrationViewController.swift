@@ -84,7 +84,6 @@ final class RegistrationViewController: UIViewController {
         sendButton.pinCentreX(view)
         sendButton.pinBottom(view.safeAreaLayoutGuide.bottomAnchor, Constants.inputButtonBottomAnchor)
         sendButton.addTarget(self, action: #selector(sendButtonPressed), for: .touchUpInside)
-        
     }
     
     internal func textFieldDidEndEditing(_ textField: UITextField) {
