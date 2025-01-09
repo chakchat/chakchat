@@ -13,7 +13,8 @@ protocol VerifyBusinessLogic {
 }
 
 protocol VerifyPresentationLogic {
-    
+    func routeToSignupScreen()
+    func showError(_ error: Error)
 }
 
 protocol VerifyWorkerLogic {
