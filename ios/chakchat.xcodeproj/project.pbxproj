@@ -36,6 +36,9 @@
 		AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62562D2EDF900064CB23 /* SuccessModels.swift */; };
 		AA9B62592D2EDF9F0064CB23 /* ErrorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */; };
 		AA9B625B2D2EE5620064CB23 /* VerificationCodeValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B625A2D2EE5620064CB23 /* VerificationCodeValidator.swift */; };
+		AA9B625F2D2FC6FD0064CB23 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B625E2D2FC6FD0064CB23 /* VerificationService.swift */; };
+		AA9B62612D2FC70A0064CB23 /* VerificationServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62602D2FC70A0064CB23 /* VerificationServiceProtocols.swift */; };
+		AA9B62642D2FCA930064CB23 /* SignupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62632D2FCA930064CB23 /* SignupEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		AA9B62562D2EDF900064CB23 /* SuccessModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModels.swift; sourceTree = "<group>"; };
 		AA9B62582D2EDF9F0064CB23 /* ErrorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModels.swift; sourceTree = "<group>"; };
 		AA9B625A2D2EE5620064CB23 /* VerificationCodeValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeValidator.swift; sourceTree = "<group>"; };
+		AA9B625E2D2FC6FD0064CB23 /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		AA9B62602D2FC70A0064CB23 /* VerificationServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceProtocols.swift; sourceTree = "<group>"; };
+		AA9B62632D2FCA930064CB23 /* SignupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 		AA9B62372D2D75050064CB23 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B625D2D2FC6E70064CB23 /* VerificationService */,
 				AA9B623A2D2D75620064CB23 /* RegistrationService */,
 			);
 			path = Services;
@@ -201,6 +208,7 @@
 		AA9B62542D2EDF700064CB23 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B62622D2FCA830064CB23 /* Endpoints */,
 				AA9B62552D2EDF810064CB23 /* ResponseModels */,
 			);
 			path = Networking;
@@ -222,6 +230,23 @@
 				AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		AA9B625D2D2FC6E70064CB23 /* VerificationService */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B625E2D2FC6FD0064CB23 /* VerificationService.swift */,
+				AA9B62602D2FC70A0064CB23 /* VerificationServiceProtocols.swift */,
+			);
+			path = VerificationService;
+			sourceTree = "<group>";
+		};
+		AA9B62622D2FCA830064CB23 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62632D2FCA930064CB23 /* SignupEndpoints.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9B625F2D2FC6FD0064CB23 /* VerificationService.swift in Sources */,
 				AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */,
 				AA9B62482D2EC78F0064CB23 /* VerifyInteractor.swift in Sources */,
 				AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */,
@@ -302,6 +328,7 @@
 				AA9B624A2D2EC7A90064CB23 /* VerifyPresenter.swift in Sources */,
 				AA9B622B2D2D6CA40064CB23 /* RegistrationViewController.swift in Sources */,
 				AA9B623C2D2D75780064CB23 /* RegistrationServiceProtocols.swift in Sources */,
+				AA9B62612D2FC70A0064CB23 /* VerificationServiceProtocols.swift in Sources */,
 				AA9B62462D2EC77F0064CB23 /* VerifyAssembly.swift in Sources */,
 				AA9B62502D2EC7D10064CB23 /* VerifyModels.swift in Sources */,
 				AA9B62522D2EC7DC0064CB23 /* VerifyProtocols.swift in Sources */,
@@ -312,6 +339,7 @@
 				AA9B62272D2D6C810064CB23 /* RegistrationInteractor.swift in Sources */,
 				AA9B622F2D2D6CB90064CB23 /* RegistrationProtocols.swift in Sources */,
 				AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */,
+				AA9B62642D2FCA930064CB23 /* SignupEndpoints.swift in Sources */,
 				AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */,
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
 				AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */,

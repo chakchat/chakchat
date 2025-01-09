@@ -1,31 +1,33 @@
 //
-//  RegistrationService.swift
+//  VerificationService.swift
 //  chakchat
 //
-//  Created by Кирилл Исаев on 07.01.2025.
+//  Created by Кирилл Исаев on 09.01.2025.
 //
 
 import Foundation
 import UIKit
-final class RegistrationService: RegistrationServiceLogic {
-
+final class VerificationService: VerificationServiceLogic {
+    
     let baseUrl = "http://localhost:80"
     
-    func send(_ request: Registration.SendCodeRequest, 
-              completion: @escaping (Result<UUID, Error>) -> Void) {
+    func send(_ request: Verify.SendVerifyCodeRequest, completion: @escaping (Result<Void, any Error>) -> Void) {
         print("Send request to server")
-        let phoneNumber = request.phone
-
-        guard let url = URL(string: SignupEndpoints.requestCode.rawValue) else {
-            completion(.failure(RegistrationError.invalidURL))
+        let signupKey = request.signupKey
+        let code = request.code
+        
+        guard let url = URL(string: SignupEndpoints.verifyCode.rawValue) else {
+            completion(.failure(VerificationError.invalidURL))
             return
         }
         
         var request = URLRequest(url: url)
+        
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let body = Registration.SendCodeRequest(phone: phoneNumber)
+        let body = Verify.SendVerifyCodeRequest(signupKey: signupKey, code: code)
+        
         do {
             request.httpBody = try JSONEncoder().encode(body)
         } catch {
@@ -40,38 +42,38 @@ final class RegistrationService: RegistrationServiceLogic {
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(RegistrationError.invalidResponse))
+                completion(.failure(VerificationError.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                completion(.failure(RegistrationError.noData))
+                completion(.failure(VerificationError.noData))
                 return
             }
             
             switch httpResponse.statusCode {
             case 200:
                 do {
-                    let response = try JSONDecoder().decode(Registration.SuccessResponse.self, from: data)
-                    completion(.success(response.signupKey))
+                    let response = try JSONDecoder().decode(Verify.SuccessResponse.self, from: data)
+                    completion(.success(()))
                 } catch {
                     completion(.failure(error))
                 }
             case 400:
                 do {
                     let errorResponse = try JSONDecoder().decode(ErrorModels.ErrorResponse.self, from: data)
-                    completion(.failure(RegistrationError.dontKnow))
+                    completion(.failure(VerificationError.dontKnow))
                 } catch {
                     completion(.failure(error))
                 }
             default:
-                completion(.failure(RegistrationError.invalidResponse))
+                completion(.failure(VerificationError.invalidResponse))
             }
         }.resume()
     }
 }
 
-enum RegistrationError: Error {
+enum VerificationError: Error {
     case invalidURL
     case invalidResponse
     case noData
