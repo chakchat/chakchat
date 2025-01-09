@@ -10,12 +10,17 @@ import Foundation
 final class KeychainManager: KeychainManagerBusinessLogic {
     
     static let keyForSaveVerificationCode: String = "verificationCode"
+    static let keyForSavePhoneNumber: String = "phoneNumber"
     
-    // Save data to Keychain
+    // for verification code and other data with UUID type
     func save(key: String, value: UUID) -> Bool {
-        let valueString = value.uuidString
+        return save(key: key, value: value.uuidString)
+    }
+    
+    // for phone and other data with string type
+    func save(key: String, value: String) -> Bool {
         
-        guard let data = valueString.data(using: .utf8) else { return false }
+        guard let data = value.data(using: .utf8) else { return false }
         
         // Create query
         let query: [String: Any] = [
@@ -31,9 +36,13 @@ final class KeychainManager: KeychainManagerBusinessLogic {
         let status = SecItemAdd(query as CFDictionary, nil)
         return status == errSecSuccess
     }
-    
-    // Retrieve data from Keychain
-    func get(key: String) -> UUID? {
+    // for verification code and other data with UUID type
+    func getUUID(key: String) -> UUID? {
+        guard let valueString = getPhone(key: key) else { return nil }
+        return UUID(uuidString: valueString)
+    }
+    // for phone and other data with string type
+    func getPhone(key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
@@ -46,10 +55,9 @@ final class KeychainManager: KeychainManagerBusinessLogic {
         
         guard status == errSecSuccess, let data = dataTypeRef as? Data,
               let valueString = String(data: data, encoding: .utf8) else { return nil }
-        return UUID(uuidString: valueString)
+        return valueString
     }
     
-    // Delete data from Keychain
     func delete(key: String) -> Bool {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
