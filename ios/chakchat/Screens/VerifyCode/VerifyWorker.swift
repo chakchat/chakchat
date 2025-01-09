@@ -26,6 +26,12 @@ final class VerifyWorker: VerifyWorkerLogic {
                 switch result {
                 case .success():
                     print("Code confirmed")
+                    let isDeleted = self.keychainManager.delete(key: KeychainManager.keyForSaveVerificationCode)
+                    if isDeleted {
+                        print("Code is successfully deleted")
+                    } else {
+                        print("Something went wrong, code isn't deleted from keychain storage!")
+                    }
                     // Move to signup screen
                 case .failure(let error):
                     print("Error: \(error)")
@@ -34,7 +40,6 @@ final class VerifyWorker: VerifyWorkerLogic {
                 }
             }
         }
-        
     }
     
     func getVerifyCode() -> UUID? {
