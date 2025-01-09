@@ -16,7 +16,7 @@ final class RegistrationService: RegistrationServiceLogic {
         print("Send request to server")
         let phoneNumber = request.phone
 
-        guard let url = URL(string: "\(baseUrl)/api/identity/v1.0/signin/send-phone-code") else {
+        guard let url = URL(string: SignupEndpoints.requestCode.rawValue) else {
             completion(.failure(RegistrationError.invalidURL))
             return
         }
