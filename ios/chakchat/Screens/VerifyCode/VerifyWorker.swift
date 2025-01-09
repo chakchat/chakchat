@@ -32,6 +32,7 @@ final class VerifyWorker: VerifyWorkerLogic {
                     } else {
                         print("Something went wrong, code isn't deleted from keychain storage!")
                     }
+                    completion(.success(()))
                     // Move to signup screen
                 case .failure(let error):
                     print("Error: \(error)")
