@@ -18,26 +18,18 @@ final class VerifyWorker: VerifyWorkerLogic {
         self.verificationService = verificationService
     }
     
-    func sendRequest(_ request: Verify.SendVerifyCodeRequest,
-                     completion: @escaping (Result<Void, any Error>) -> Void) {
+    func sendRequest(_ request: Verify.VerifyCodeRequest,
+                     completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
+        
         verificationService.send(request) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success():
-                    print("Code confirmed")
-                    let isDeleted = self.keychainManager.delete(key: KeychainManager.keyForSaveVerificationCode)
-                    if isDeleted {
-                        print("Code is successfully deleted")
-                    } else {
-                        print("Something went wrong, code isn't deleted from keychain storage!")
-                    }
+                case .success(_):
                     completion(.success(()))
-                    // Move to signup screen
-                case .failure(let error):
-                    print("Error: \(error)")
-                    completion(.failure(error))
-                    // Start to cry
+                case .failure(let apiError):
+                    print("Something went wrong: \(apiError)")
+                    completion(.failure(apiError))
                 }
             }
         }
