@@ -14,3 +14,8 @@ protocol RegistrationValidator {
 protocol VerificationValidator {
     func validate(_ value: String) -> Bool
 }
+
+protocol SignupValidator {
+    func validateName(_ value: String) -> Bool
+    func validateUsername(_ value: String) -> Bool
+}

@@ -12,7 +12,7 @@ final class RegistrationWorker: RegistrationWorkerLogic {
     private let registrationService: RegistrationServiceLogic
     private let keychainManager: KeychainManagerBusinessLogic
     
-    init(registrationService: RegistrationServiceLogic, keychainManager: KeychainManager) {
+    init(registrationService: RegistrationServiceLogic, keychainManager: KeychainManagerBusinessLogic) {
         self.registrationService = registrationService
         self.keychainManager = keychainManager
     }
@@ -23,7 +23,7 @@ final class RegistrationWorker: RegistrationWorkerLogic {
         registrationService.send(request) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let signinKey):
+                case .success(let successResponse):
                     print("Save current phone number")
                     var isSaved = self.keychainManager.save(key: KeychainManager.keyForSavePhoneNumber,
                                                             value: request.phone)
@@ -34,20 +34,19 @@ final class RegistrationWorker: RegistrationWorkerLogic {
                         completion(.failure(Keychain.KeychainError.saveError))
                     }
                     
-                    print("Get code: \(signinKey)")
+                    print("Get code: \(successResponse.data.signupKey)")
                     isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
-                                                       value: signinKey)
+                                                        value: successResponse.data.signupKey)
                     if isSaved {
                         print("Verification code is saved")
-                        completion(.success(())) // Move to verify code screen
+                        completion(.success(()))
                     } else {
                         print("Verification code isn't saved")
                         completion(.failure((Keychain.KeychainError.saveError)))
                     }
-                case .failure(let error):
-                    print("Error: \(error)")
-                    completion(.failure(error))
-                    // Start to cry
+                case .failure(let apiError):
+                    print("Error: \(apiError)")
+                    completion(.failure(apiError))
                 }
             }
         }

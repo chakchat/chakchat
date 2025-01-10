@@ -13,7 +13,7 @@ protocol RegistrationBusinessLogic {
 }
 
 protocol RegistrationPresentationLogic {
-    func routeToVerifyScreen()
+    func presentSuccess()
     func showError(_ error: Error)
 }
 

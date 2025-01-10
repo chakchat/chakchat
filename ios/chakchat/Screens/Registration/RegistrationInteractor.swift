@@ -18,20 +18,19 @@ class RegistrationInteractor: RegistrationBusinessLogic {
     }
     
     func sendRegistrationRequest(_ request: Registration.SendCodeRequest) {
-        /*
         print("Send request to worker")
+        /*
         worker.sendRequest(request) { result in
             switch result {
             case .success:
-                self.presenter.routeToVerifyScreen()
+                self.presenter.presentSuccess()
                 // Route to verify code screen
             case .failure(let error):
                 self.presenter.showError(error)
                 print("Error: \(error)")
             }
         }
-         */
-        presenter.routeToVerifyScreen()
+        */
+        presenter.presentSuccess()
     }
-    
 }

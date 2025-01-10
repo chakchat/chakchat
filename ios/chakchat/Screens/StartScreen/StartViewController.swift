@@ -18,6 +18,7 @@ final class StartViewController: UIViewController {
     }
     
     private lazy var startMessengerButton: UIButton = UIButton(type: .system)
+    var onRouteToRegistrationScreen: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ final class StartViewController: UIViewController {
     
     @objc
     private func startMessengerButtonPressed() {
-        let registrationVC = RegistrationAssembly.build()
-        navigationController?.pushViewController(registrationVC, animated: true)
+        onRouteToRegistrationScreen?()
     }
 }

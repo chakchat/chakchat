@@ -13,12 +13,12 @@ protocol VerifyBusinessLogic {
 }
 
 protocol VerifyPresentationLogic {
-    func routeToSignupScreen()
+    func presentSuccess()
     func showError(_ error: Error)
 }
 
 protocol VerifyWorkerLogic {
-    func sendRequest(_ request: Verify.SendVerifyCodeRequest,
+    func sendRequest(_ request: Verify.VerifyCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void)
     func getVerifyCode() -> UUID?
 }

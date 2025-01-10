@@ -1,5 +1,5 @@
 //
-//  VerificationService.swift
+//  SignupService.swift
 //  chakchat
 //
 //  Created by Кирилл Исаев on 09.01.2025.
@@ -7,15 +7,16 @@
 
 import Foundation
 import UIKit
-final class VerificationService: VerificationServiceLogic {
-        
-    func send(_ request: Verify.VerifyCodeRequest,
-              completion: @escaping (Result<Verify.SuccessVerifyResponse, APIError>) -> Void) {
+final class SignupService: SignupServiceLogic {
+    
+    func send(_ request: Signup.SignupRequest, 
+              completion: @escaping (Result<Signup.SuccessSignupResponse, APIError>) -> Void) {
         print("Send request to server")
         let signupKey = request.signupKey
-        let code = request.code
+        let name = request.name
+        let username = request.username
         
-        guard let url = URL(string: SignupEndpoints.verifyCodeEndpoint.rawValue) else {
+        guard let url = URL(string: SignupEndpoints.signupEndpoint.rawValue) else {
             completion(.failure(APIError.invalidURL))
             return
         }
@@ -25,8 +26,9 @@ final class VerificationService: VerificationServiceLogic {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         //request.addValue(UUID().uuidString, forHTTPHeaderField: "Idempotency-Key")
         
-        let body = Verify.VerifyCodeRequest(signupKey: signupKey,
-                                            code: code)
+        let body = Signup.SignupRequest(signupKey: signupKey,
+                                            name: name,
+                                            username: username)
         
         guard let httpBody = try? JSONEncoder().encode(body) else {
             completion(.failure(APIError.invalidRequest))
@@ -54,7 +56,7 @@ final class VerificationService: VerificationServiceLogic {
             switch httpResponse.statusCode {
             case 200:
                 do {
-                    let responseData = try JSONDecoder().decode(Verify.SuccessVerifyResponse.self, from: data)
+                    let responseData = try JSONDecoder().decode(Signup.SuccessSignupResponse.self, from: data)
                     completion(.success(responseData))
                 } catch {
                     completion(.failure(APIError.decodingError(error)))

@@ -11,11 +11,13 @@ final class VerifyPresenter: VerifyPresentationLogic {
 
     weak var view: VerifyViewController?
     
-    func routeToSignupScreen() {
-        view?.navigationController?.pushViewController(SignupAssembly.build(), animated: true)
+    var onRouteToSignupScreen: (() -> Void)?
+    
+    func presentSuccess() {
+        onRouteToSignupScreen?()
     }
     
-    func showError(_ error: any Error) {
+    func showError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         view?.present(alert, animated: true, completion: nil)
     }

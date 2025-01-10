@@ -11,6 +11,8 @@ final class KeychainManager: KeychainManagerBusinessLogic {
     
     static let keyForSaveVerificationCode: String = "verificationCode"
     static let keyForSavePhoneNumber: String = "phoneNumber"
+    static let keyForSaveAccessToken: String = "accessToken"
+    static let keyForSaveRefreshToken: String = "refreshToken"
     
     // for verification code and other data with UUID type
     func save(key: String, value: UUID) -> Bool {
@@ -72,6 +74,8 @@ final class KeychainManager: KeychainManagerBusinessLogic {
 enum Keychain {
     enum KeychainError: Error {
         case saveError
+        case getError
+        case deleteError
     }
 }
 
