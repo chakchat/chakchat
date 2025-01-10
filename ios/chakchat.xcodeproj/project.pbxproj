@@ -52,6 +52,8 @@
 		AA9B62862D303E330064CB23 /* StartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62852D303E330064CB23 /* StartAssembly.swift */; };
 		AA9B62892D303FAA0064CB23 /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62882D303FAA0064CB23 /* SignupService.swift */; };
 		AA9B628B2D303FB50064CB23 /* SignupServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628A2D303FB50064CB23 /* SignupServiceProtocols.swift */; };
+		AA9B628D2D3149B60064CB23 /* ApiErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */; };
+		AA9B628F2D3152570064CB23 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628E2D3152570064CB23 /* Sender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		AA9B62852D303E330064CB23 /* StartAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAssembly.swift; sourceTree = "<group>"; };
 		AA9B62882D303FAA0064CB23 /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
 		AA9B628A2D303FB50064CB23 /* SignupServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupServiceProtocols.swift; sourceTree = "<group>"; };
+		AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrorTypes.swift; sourceTree = "<group>"; };
+		AA9B628E2D3152570064CB23 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,8 @@
 			children = (
 				AA9B62622D2FCA830064CB23 /* Endpoints */,
 				AA9B62552D2EDF810064CB23 /* ResponseModels */,
+				AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */,
+				AA9B628E2D3152570064CB23 /* Sender.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */,
 				AA9B62692D2FD2390064CB23 /* SignupInteractor.swift in Sources */,
 				AA9B62482D2EC78F0064CB23 /* VerifyInteractor.swift in Sources */,
+				AA9B628F2D3152570064CB23 /* Sender.swift in Sources */,
 				AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */,
 				AA9B62292D2D6C970064CB23 /* RegistrationPresenter.swift in Sources */,
 				AA9B626F2D2FD2660064CB23 /* SignupModels.swift in Sources */,
@@ -432,6 +439,7 @@
 				AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */,
 				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
 				AA9B62202D2D5F790064CB23 /* StartViewController.swift in Sources */,
+				AA9B628D2D3149B60064CB23 /* ApiErrorTypes.swift in Sources */,
 				AA9B626D2D2FD25A0064CB23 /* SignupViewController.swift in Sources */,
 				AA9B624E2D2EC7C50064CB23 /* VerifyViewController.swift in Sources */,
 				AA9B62672D2FD22B0064CB23 /* SignupAssembly.swift in Sources */,
