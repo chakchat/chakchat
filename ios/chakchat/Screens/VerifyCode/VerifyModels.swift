@@ -19,9 +19,6 @@ enum Verify {
         }
     }
     
-    struct SuccessVerifyResponse: Codable {
-        let data: SuccessVerifyData
-    }
     
     struct SuccessVerifyData: Codable {}
 }

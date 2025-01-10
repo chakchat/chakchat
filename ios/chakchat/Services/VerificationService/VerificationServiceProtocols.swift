@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 protocol VerificationServiceLogic {
-    func send(_ request: Verify.VerifyCodeRequest,
-              completion: @escaping (Result<Verify.SuccessVerifyResponse, APIError>) -> Void)
+    func sendVerificationRequest(_ request: Verify.VerifyCodeRequest,
+                                 completion: @escaping (Result<Verify.SuccessVerifyData, APIError>) -> Void)
 }

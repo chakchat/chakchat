@@ -22,10 +22,6 @@ enum Signup {
         }
     }
     
-    struct SuccessSignupResponse: Codable {
-        let data: SuccessSignupData
-    }
-    
     struct SuccessSignupData: Codable {
         let accessToken: String
         let refreshToken: String

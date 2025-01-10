@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 protocol SignupServiceLogic {
-    func send(_ request: Signup.SignupRequest,
-              completion: @escaping (Result<Signup.SuccessSignupResponse, APIError>) -> Void)
+    func sendSignupRequest(_ request: Signup.SignupRequest,
+                           completion: @escaping (Result<Signup.SuccessSignupData, APIError>) -> Void)
 }

@@ -22,7 +22,7 @@ final class VerifyWorker: VerifyWorkerLogic {
                      completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
         
-        verificationService.send(request) { result in
+        verificationService.sendVerificationRequest(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):

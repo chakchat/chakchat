@@ -20,7 +20,7 @@ final class RegistrationWorker: RegistrationWorkerLogic {
     func sendRequest(_ request: Registration.SendCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
-        registrationService.send(request) { result in
+        registrationService.sendRegistrationRequest(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
@@ -34,9 +34,9 @@ final class RegistrationWorker: RegistrationWorkerLogic {
                         completion(.failure(Keychain.KeychainError.saveError))
                     }
                     
-                    print("Get code: \(successResponse.data.signupKey)")
+                    print("Get code: \(successResponse.signupKey)")
                     isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
-                                                        value: successResponse.data.signupKey)
+                                                        value: successResponse.signupKey)
                     if isSaved {
                         print("Verification code is saved")
                         completion(.success(()))
