@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 final class RegistrationService: RegistrationServiceLogic {
     
-    func sendRegistrationRequest(_ request: Registration.SendCodeRequest, completion: @escaping (Result<Registration.SuccessRegistrationResponse, APIError>) -> Void) {
+    func sendRegistrationRequest(_ request: Registration.SendCodeRequest, completion: @escaping (Result<Registration.SuccessRegistrationData, APIError>) -> Void) {
         Sender.send(
             requestBody: request,
-            responseType: Registration.SuccessRegistrationResponse.self,
+            responseType: Registration.SuccessRegistrationData.self,
             endpoint: SignupEndpoints.getCodeEndpoint.rawValue,
             completion: completion)
     }

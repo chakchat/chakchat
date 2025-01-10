@@ -50,8 +50,8 @@ final class Sender {
             switch httpResponse.statusCode {
             case 200:
                 do {
-                    let responseData = try JSONDecoder().decode(responseType, from: data)
-                    completion(.success(responseData))
+                    let responseData = try JSONDecoder().decode(SuccessResponse<U>.self, from: data)
+                    completion(.success(responseData.data))
                 } catch {
                     completion(.failure(APIError.decodingError(error)))
                 }
@@ -66,4 +66,8 @@ final class Sender {
         }
         task.resume()
     }
+}
+
+struct SuccessResponse<T: Codable>: Codable {
+    let data: T
 }

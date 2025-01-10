@@ -24,9 +24,9 @@ class SignupWorker: SignupWorkerLogic {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
-                    print("Access token: \(successResponse.data.accessToken)\nRefresh token: \(successResponse.data.refreshToken)")
+                    print("Access token: \(successResponse.accessToken)\nRefresh token: \(successResponse.refreshToken)")
                     var isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveAccessToken,
-                                                       value: successResponse.data.accessToken)
+                                                       value: successResponse.accessToken)
                     if isSaved {
                         print("Access token is saved in keychain storage")
                     } else {
@@ -35,7 +35,7 @@ class SignupWorker: SignupWorkerLogic {
                     }
                     
                     isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveRefreshToken,
-                                                        value: successResponse.data.refreshToken)
+                                                        value: successResponse.refreshToken)
                     
                     if isSaved {
                         print("Refresh token is saved in keychain storage")

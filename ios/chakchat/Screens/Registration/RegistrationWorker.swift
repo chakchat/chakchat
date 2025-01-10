@@ -34,9 +34,9 @@ final class RegistrationWorker: RegistrationWorkerLogic {
                         completion(.failure(Keychain.KeychainError.saveError))
                     }
                     
-                    print("Get code: \(successResponse.data.signupKey)")
+                    print("Get code: \(successResponse.signupKey)")
                     isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
-                                                        value: successResponse.data.signupKey)
+                                                        value: successResponse.signupKey)
                     if isSaved {
                         print("Verification code is saved")
                         completion(.success(()))

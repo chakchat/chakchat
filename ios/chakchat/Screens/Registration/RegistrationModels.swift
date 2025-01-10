@@ -12,12 +12,8 @@ enum Registration {
     struct SendCodeRequest: Codable {
         let phone: String
     }
-    
-    struct SuccessRegistrationResponse: Codable {
-        let data: SuccessVerifyData
-    }
-    
-    struct SuccessVerifyData: Codable {
+        
+    struct SuccessRegistrationData: Codable {
         let signupKey: UUID
         
         enum CodingKeys: String, CodingKey {

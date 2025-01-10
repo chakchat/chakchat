@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 final class SignupService: SignupServiceLogic {
     
-    func sendSignupRequest(_ request: Signup.SignupRequest, completion: @escaping (Result<Signup.SuccessSignupResponse, APIError>) -> Void) {
+    func sendSignupRequest(_ request: Signup.SignupRequest,
+                           completion: @escaping (Result<Signup.SuccessSignupData, APIError>) -> Void) {
         Sender.send(
             requestBody: request,
-            responseType: Signup.SuccessSignupResponse.self,
+            responseType: Signup.SuccessSignupData.self,
             endpoint: SignupEndpoints.signupEndpoint.rawValue,
             completion: completion)
     }

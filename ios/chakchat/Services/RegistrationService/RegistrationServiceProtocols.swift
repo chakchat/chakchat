@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 protocol RegistrationServiceLogic {
     func sendRegistrationRequest(_ request: Registration.SendCodeRequest,
-              completion: @escaping (Result<Registration.SuccessRegistrationResponse, APIError>) -> Void)
+                                 completion: @escaping (Result<Registration.SuccessRegistrationData, APIError>) -> Void)
 }

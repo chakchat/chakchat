@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 final class VerificationService: VerificationServiceLogic {
     
-    func sendVerificationRequest(_ request: Verify.VerifyCodeRequest, completion: @escaping (Result<Verify.SuccessVerifyResponse, APIError>) -> Void) {
+    func sendVerificationRequest(_ request: Verify.VerifyCodeRequest, completion: @escaping (Result<Verify.SuccessVerifyData, APIError>) -> Void) {
         Sender.send(
             requestBody: request,
-            responseType: Verify.SuccessVerifyResponse.self,
+            responseType: Verify.SuccessVerifyData.self,
             endpoint: SignupEndpoints.verifyCodeEndpoint.rawValue,
             completion: completion)
     }

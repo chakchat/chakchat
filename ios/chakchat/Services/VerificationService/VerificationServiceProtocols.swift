@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 protocol VerificationServiceLogic {
     func sendVerificationRequest(_ request: Verify.VerifyCodeRequest,
-              completion: @escaping (Result<Verify.SuccessVerifyResponse, APIError>) -> Void)
+                                 completion: @escaping (Result<Verify.SuccessVerifyData, APIError>) -> Void)
 }
