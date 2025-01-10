@@ -23,7 +23,7 @@ final class RegistrationService: RegistrationServiceLogic {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.addValue(UUID().uuidString, forHTTPHeaderField: "Idempotency-Key")
+        request.addValue(UUID().uuidString, forHTTPHeaderField: "Idempotency-Key")
         
         let body = Registration.SendCodeRequest(phone: phone)
         
@@ -63,7 +63,7 @@ final class RegistrationService: RegistrationServiceLogic {
                     let errorResponse = try JSONDecoder().decode(APIErrorResponse.self, from: data)
                     completion(.failure(APIError.apiError(errorResponse)))
                 } catch {
-                    completion(.failure(APIError.unknown))
+                    completion(.failure(APIError.decodingError(error)))
                 }
             }
         }
