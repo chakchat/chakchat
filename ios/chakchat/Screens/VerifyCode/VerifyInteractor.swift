@@ -20,13 +20,13 @@ final class VerifyInteractor: VerifyBusinessLogic {
     func sendVerificationRequest(_ code: String) {
         print("Send request to worker")
         /*
-        let signupKey: UUID? = worker.getVerifyCode()
+        let signupKey: UUID! = worker.getVerifyCode()
         if signupKey != nil {
-            worker.sendRequest(Verify.SendVerifyCodeRequest(signupKey: signupKey!, code: code)) { result in
+            worker.sendRequest(Verify.VerifyCodeRequest(signupKey: signupKey, code: code)) { result in
                 switch result {
                 case .success:
                     print("Succes")
-                    self.presentor.routeToSignupScreen()
+                    self.presentor.presentSuccess()
                 case .failure(let error):
                     print("Error: \(error)")
                     self.presentor.showError(error)
@@ -35,7 +35,7 @@ final class VerifyInteractor: VerifyBusinessLogic {
         } else {
             print("Cant find signupKey in keychain")
         }
-         */
-        presentor.routeToSignupScreen()
+        */
+        presentor.presentSuccess()
     }
 }

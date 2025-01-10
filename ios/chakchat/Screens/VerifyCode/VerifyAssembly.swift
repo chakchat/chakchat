@@ -9,19 +9,22 @@ import Foundation
 import UIKit
 
 enum VerifyAssembly {
-    static func build() -> UIViewController {
-        let presentor = VerifyPresenter()
+    static func build(with context: SignupContext, coordinator: AppCoordinator) -> UIViewController {
+        let presenter = VerifyPresenter()
         
         let verificationService = VerificationService()
-        let keychainManager = KeychainManager()
         
-        let worker = VerifyWorker(keychainManager: keychainManager, 
+        let worker = VerifyWorker(keychainManager: context.keychainManager,
                                   verificationService: verificationService)
+        let interactor = VerifyInteractor(presentor: presenter, worker: worker)
         
-        let interactor = VerifyInteractor(presentor: presentor, worker: worker)
         let view = VerifyViewController(interactor: interactor)
         
-        presentor.view = view
+        presenter.view = view
+        
+        presenter.onRouteToSignupScreen = {
+            coordinator.showSignupScreen()
+        }
         
         return view
     }

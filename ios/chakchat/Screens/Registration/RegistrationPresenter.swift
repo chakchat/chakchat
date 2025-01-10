@@ -12,11 +12,13 @@ class RegistrationPresenter: RegistrationPresentationLogic {
     
     weak var view: RegistrationViewController?
     
-    func routeToVerifyScreen() {
-        view?.navigationController?.pushViewController(VerifyAssembly.build(), animated: true)
+    var onRouteToVerifyScreen: (() -> Void)?
+
+    func presentSuccess() {
+        onRouteToVerifyScreen?()
     }
-    
-    func showError(_ error: any Error) {
+
+    func showError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         view?.present(alert, animated: true, completion: nil)
     }

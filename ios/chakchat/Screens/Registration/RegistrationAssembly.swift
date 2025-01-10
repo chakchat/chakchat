@@ -9,18 +9,21 @@ import Foundation
 import UIKit
 
 enum RegistrationAssembly {
-    static func build() -> UIViewController {
+    static func build(with context: SignupContext, coordinator: AppCoordinator) -> UIViewController {
         let presenter = RegistrationPresenter()
         
         let registrationService = RegistrationService()
-        let keychainManager = KeychainManager()
         
         let worker = RegistrationWorker(registrationService: registrationService,
-                                        keychainManager: keychainManager)
+                                        keychainManager: context.keychainManager)
         
         let interactor = RegistrationInteractor(presenter: presenter, worker: worker)
         let view = RegistrationViewController(interactor: interactor)
         presenter.view = view
+        
+        presenter.onRouteToVerifyScreen = {
+            coordinator.showVerifyScreen()
+        }
         
         return view
     }
