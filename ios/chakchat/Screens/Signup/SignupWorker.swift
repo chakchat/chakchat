@@ -20,7 +20,7 @@ class SignupWorker: SignupWorkerLogic {
     func sendRequest(_ request: Signup.SignupRequest, completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
         
-        signupService.send(request) { result in
+        signupService.sendSignupRequest(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):

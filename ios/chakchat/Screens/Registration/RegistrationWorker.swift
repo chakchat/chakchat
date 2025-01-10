@@ -20,7 +20,7 @@ final class RegistrationWorker: RegistrationWorkerLogic {
     func sendRequest(_ request: Registration.SendCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
-        registrationService.send(request) { result in
+        registrationService.sendRegistrationRequest(request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
