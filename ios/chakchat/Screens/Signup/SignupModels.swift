@@ -6,3 +6,33 @@
 //
 
 import Foundation
+import UIKit
+
+enum Signup {
+    
+    struct SignupRequest: Codable {
+        let signupKey: UUID
+        let name: String
+        let username: String
+        
+        enum CodingKeys: String, CodingKey {
+            case signupKey = "signup_key"
+            case name = "name"
+            case username = "username"
+        }
+    }
+    
+    struct SuccessSignupResponse: Codable {
+        let data: SuccessSignupData
+    }
+    
+    struct SuccessSignupData: Codable {
+        let accessToken: String
+        let refreshToken: String
+        
+        enum CodingKeys: String, CodingKey {
+            case accessToken = "access_token"
+            case refreshToken = "refresh_token"
+        }
+    }
+}
