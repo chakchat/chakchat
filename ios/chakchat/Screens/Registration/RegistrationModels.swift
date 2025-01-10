@@ -13,12 +13,15 @@ enum Registration {
         let phone: String
     }
     
-    struct SuccessResponse: Codable {
+    struct SuccessRegistrationResponse: Codable {
+        let data: SuccessVerifyData
+    }
+    
+    struct SuccessVerifyData: Codable {
         let signupKey: UUID
         
         enum CodingKeys: String, CodingKey {
             case signupKey = "signup_key"
         }
     }
-    
 }

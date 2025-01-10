@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 enum Verify {
     
-    struct SendVerifyCodeRequest: Codable {
+    struct VerifyCodeRequest: Codable {
         let signupKey: UUID
         let code: String
         
@@ -19,7 +19,9 @@ enum Verify {
         }
     }
     
-    struct SuccessResponse: Codable {
-        
+    struct SuccessVerifyResponse: Codable {
+        let data: SuccessVerifyData
     }
+    
+    struct SuccessVerifyData: Codable {}
 }
