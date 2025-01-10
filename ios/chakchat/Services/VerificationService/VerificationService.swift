@@ -8,74 +8,67 @@
 import Foundation
 import UIKit
 final class VerificationService: VerificationServiceLogic {
-    
-    let baseUrl = "http://localhost:80"
-    
-    func send(_ request: Verify.SendVerifyCodeRequest, completion: @escaping (Result<Void, any Error>) -> Void) {
+        
+    func send(_ request: Verify.VerifyCodeRequest,
+              completion: @escaping (Result<Verify.SuccessVerifyResponse, APIError>) -> Void) {
         print("Send request to server")
         let signupKey = request.signupKey
         let code = request.code
         
-        guard let url = URL(string: SignupEndpoints.verifyCode.rawValue) else {
-            completion(.failure(VerificationError.invalidURL))
+        guard let url = URL(string: SignupEndpoints.verifyCodeEndpoint.rawValue) else {
+            completion(.failure(APIError.invalidURL))
             return
         }
         
         var request = URLRequest(url: url)
-        
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.addValue(UUID().uuidString, forHTTPHeaderField: "Idempotency-Key")
         
-        let body = Verify.SendVerifyCodeRequest(signupKey: signupKey, code: code)
+        let body = Verify.VerifyCodeRequest(signupKey: signupKey,
+                                            code: code)
         
-        do {
-            request.httpBody = try JSONEncoder().encode(body)
-        } catch {
-            completion(.failure(error))
+        guard let httpBody = try? JSONEncoder().encode(body) else {
+            completion(.failure(APIError.invalidRequest))
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        request.httpBody = httpBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(APIError.networkError(error)))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(VerificationError.invalidResponse))
+                completion(.failure(APIError.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                completion(.failure(VerificationError.noData))
+                completion(.failure(APIError.noData))
                 return
             }
             
             switch httpResponse.statusCode {
             case 200:
                 do {
-                    let response = try JSONDecoder().decode(Verify.SuccessResponse.self, from: data)
-                    completion(.success(()))
+                    let responseData = try JSONDecoder().decode(Verify.SuccessVerifyResponse.self, from: data)
+                    completion(.success(responseData))
                 } catch {
-                    completion(.failure(error))
-                }
-            case 400:
-                do {
-                    let errorResponse = try JSONDecoder().decode(ErrorModels.ErrorResponse.self, from: data)
-                    completion(.failure(VerificationError.dontKnow))
-                } catch {
-                    completion(.failure(error))
+                    completion(.failure(APIError.decodingError(error)))
                 }
             default:
-                completion(.failure(VerificationError.invalidResponse))
+                do {
+                    let errorResponse = try JSONDecoder().decode(APIErrorResponse.self, from: data)
+                    completion(.failure(APIError.apiError(errorResponse)))
+                } catch {
+                    completion(.failure(APIError.unknown))
+                }
             }
-        }.resume()
+        }
+        
+        task.resume()
     }
-}
-
-enum VerificationError: Error {
-    case invalidURL
-    case invalidResponse
-    case noData
-    case dontKnow
 }
