@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum RegistrationAssembly {
+enum SendPhoneCodeAssembly {
     static func build(with context: SignupContext, coordinator: AppCoordinator) -> UIViewController {
         let presenter = RegistrationPresenter()
         

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol RegistrationBusinessLogic {
-    func sendRegistrationRequest(_ request: Registration.SendCodeRequest)
+    func sendRequest(_ request: Registration.SendCodeRequest)
     func successTransition()
 }
 

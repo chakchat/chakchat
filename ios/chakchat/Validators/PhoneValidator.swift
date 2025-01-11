@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class PhoneValidator: RegistrationValidator {
+class PhoneValidator: SendCodeValidator {
     func validate(_ value: String) -> Bool {
         let phoneRegex = "^8[0-9]{10}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)

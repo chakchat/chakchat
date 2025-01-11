@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
-final class RegistrationService: RegistrationServiceLogic {
+final class SendPhoneService: SendPhoneServiceProtocols {
     
-    func sendRegistrationRequest(_ request: Registration.SendCodeRequest, completion: @escaping (Result<Registration.SuccessRegistrationData, APIError>) -> Void) {
+    func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest, completion: @escaping (Result<SendCodeModels.SuccessSendCodeData, APIError>) -> Void) {
         Sender.send(
             requestBody: request,
-            responseType: Registration.SuccessRegistrationData.self,
+            responseType: SendCodeModels.SuccessSendCodeData.self,
             endpoint: SignupEndpoints.getCodeEndpoint.rawValue,
             completion: completion)
     }
