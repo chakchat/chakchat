@@ -12,6 +12,8 @@ class SignupInteractor: SignupBusinessLogic {
     private let presenter: SignupPresentationLogic
     private let worker: SignupWorkerLogic
     
+    var onRouteToChatScreen: (() -> Void)?
+    
     init(presenter: SignupPresentationLogic, worker: SignupWorkerLogic) {
         self.presenter = presenter
         self.worker = worker
@@ -19,14 +21,13 @@ class SignupInteractor: SignupBusinessLogic {
     
     func sendSignupRequest(_ name: String, _ username: String) {
         print("Send request to worker")
-        /*
         let signupKey: UUID! = worker.getSignupCode()
         if signupKey != nil {
             worker.sendRequest(Signup.SignupRequest(signupKey: signupKey, name: name, username: username)) { result in
                 switch result {
                 case .success:
                     print("Succes")
-                    self.presenter.presentSuccess()
+                    self.successTransition()
                 case .failure(let error):
                     print("Error: \(error)")
                     self.presenter.showError(error)
@@ -35,7 +36,9 @@ class SignupInteractor: SignupBusinessLogic {
         } else {
             print("Can't find signup key in keychain storage!")
         }
-        */
-        presenter.presentSuccess()
+    }
+    
+    func successTransition() {
+        onRouteToChatScreen?()
     }
 }

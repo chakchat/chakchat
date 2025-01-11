@@ -11,11 +11,6 @@ final class VerifyPresenter: VerifyPresentationLogic {
 
     weak var view: VerifyViewController?
     
-    var onRouteToSignupScreen: (() -> Void)?
-    
-    func presentSuccess() {
-        onRouteToSignupScreen?()
-    }
     
     func showError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)

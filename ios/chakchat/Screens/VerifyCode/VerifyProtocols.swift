@@ -10,10 +10,10 @@ import UIKit
 
 protocol VerifyBusinessLogic {
     func sendVerificationRequest(_ code: String)
+    func successTransition()
 }
 
 protocol VerifyPresentationLogic {
-    func presentSuccess()
     func showError(_ error: Error)
 }
 

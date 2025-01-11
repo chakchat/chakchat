@@ -10,10 +10,10 @@ import UIKit
 
 protocol RegistrationBusinessLogic {
     func sendRegistrationRequest(_ request: Registration.SendCodeRequest)
+    func successTransition()
 }
 
 protocol RegistrationPresentationLogic {
-    func presentSuccess()
     func showError(_ error: Error)
 }
 

@@ -12,6 +12,8 @@ final class VerifyInteractor: VerifyBusinessLogic {
     private var presentor: VerifyPresentationLogic
     private var worker: VerifyWorkerLogic
     
+    var onRouteToSignupScreen: (() -> Void)?
+    
     init(presentor: VerifyPresentationLogic, worker: VerifyWorkerLogic) {
         self.presentor = presentor
         self.worker = worker
@@ -19,14 +21,13 @@ final class VerifyInteractor: VerifyBusinessLogic {
     
     func sendVerificationRequest(_ code: String) {
         print("Send request to worker")
-        /*
         let signupKey: UUID! = worker.getVerifyCode()
         if signupKey != nil {
             worker.sendRequest(Verify.VerifyCodeRequest(signupKey: signupKey, code: code)) { result in
                 switch result {
                 case .success:
                     print("Succes")
-                    self.presentor.presentSuccess()
+                    self.successTransition()
                 case .failure(let error):
                     print("Error: \(error)")
                     self.presentor.showError(error)
@@ -35,7 +36,9 @@ final class VerifyInteractor: VerifyBusinessLogic {
         } else {
             print("Cant find signupKey in keychain")
         }
-        */
-        presentor.presentSuccess()
+    }
+    
+    func successTransition() {
+        onRouteToSignupScreen?()
     }
 }

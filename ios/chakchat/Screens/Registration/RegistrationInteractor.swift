@@ -12,6 +12,8 @@ class RegistrationInteractor: RegistrationBusinessLogic {
     private var presenter: RegistrationPresentationLogic
     private var worker: RegistrationWorkerLogic
     
+    var onRouteToVerifyScreen: (() -> Void)?
+    
     init(presenter: RegistrationPresentationLogic, worker: RegistrationWorkerLogic) {
         self.presenter = presenter
         self.worker = worker
@@ -19,18 +21,19 @@ class RegistrationInteractor: RegistrationBusinessLogic {
     
     func sendRegistrationRequest(_ request: Registration.SendCodeRequest) {
         print("Send request to worker")
-        /*
         worker.sendRequest(request) { result in
             switch result {
             case .success:
-                self.presenter.presentSuccess()
+                self.successTransition()
                 // Route to verify code screen
             case .failure(let error):
                 self.presenter.showError(error)
                 print("Error: \(error)")
             }
         }
-        */
-        presenter.presentSuccess()
+    }
+    
+    func successTransition() {
+        onRouteToVerifyScreen?()
     }
 }
