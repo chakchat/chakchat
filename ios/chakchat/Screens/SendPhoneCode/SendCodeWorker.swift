@@ -7,45 +7,68 @@
 
 import Foundation
 import UIKit
-final class RegistrationWorker: RegistrationWorkerLogic {
+final class SendCodeWorker: SendCodeWorkerLogic {
     
-    private let registrationService: RegistrationServiceLogic
+    private let sendCodeService: SendCodeServiceLogic
     private let keychainManager: KeychainManagerBusinessLogic
     
-    init(registrationService: RegistrationServiceLogic, keychainManager: KeychainManagerBusinessLogic) {
-        self.registrationService = registrationService
+    init(sendCodeService: SendCodeServiceLogic, keychainManager: KeychainManagerBusinessLogic) {
+        self.sendCodeService = sendCodeService
         self.keychainManager = keychainManager
     }
     
-    func sendRequest(_ request: Registration.SendCodeRequest,
+    func sendInRequest(_ request: SendCodeModels.SendCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void) {
         print("Send request to service")
-        registrationService.sendRegistrationRequest(request) { result in
+        sendCodeService.sendCodeRequest(request,
+                                        SigninEndpoints.sendPhoneCodeEndpoint.rawValue,
+                                        SendCodeModels.SuccessSendCodeSigninData.self) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
-                    print("Save current phone number")
-                    var isSaved = self.keychainManager.save(key: KeychainManager.keyForSavePhoneNumber,
-                                                            value: request.phone)
+                    print("Get signin code")
+                    let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveSigninCode,
+                                                       value: successResponse.signinKey)
                     if isSaved {
-                        print("Phone number is saved")
-                    } else {
-                        print("Something went wrong, phone numbers isnt saved in keychain storage!")
-                        completion(.failure(Keychain.KeychainError.saveError))
-                    }
-                    
-                    print("Get code: \(successResponse.signupKey)")
-                    isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveVerificationCode,
-                                                        value: successResponse.signupKey)
-                    if isSaved {
-                        print("Verification code is saved")
+                        print("Saved signin key in keychain storage")
                         completion(.success(()))
                     } else {
-                        print("Verification code isn't saved")
-                        completion(.failure((Keychain.KeychainError.saveError)))
+                        print("Something went wrong, signin isnt saved in keychain storage")
+                        completion(.failure(Keychain.KeychainError.saveError))
                     }
                 case .failure(let apiError):
-                    print("Error: \(apiError)")
+                    print("Something went wrong, dont get signin key")
+                    if case .apiError(let apiErrorResponse) = apiError {
+                        if apiErrorResponse.errorType == ApiErrorType.userNotFound.rawValue {
+                            self.sendUpRequest(request, completion: completion)
+                        }
+                    } else {
+                        completion(.failure(apiError))
+                    }
+                }
+            }
+        }
+    }
+    
+    func sendUpRequest(_ request: SendCodeModels.SendCodeRequest,
+                       completion: @escaping (Result<Void, Error>) -> Void) {
+        sendCodeService.sendCodeRequest(request,
+                                        SignupEndpoints.sendPhoneCodeEndpoint.rawValue, SendCodeModels.SuccessSendCodeSignupData.self) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let successResponse):
+                    print("Get signup code")
+                    let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveSignupCode,
+                                                       value: successResponse.signupKey)
+                    if isSaved {
+                        print("Saved signup key in keychain storage")
+                        completion(.success(()))
+                    } else {
+                        print("Something went wrong, signup isnt saved in keychain storage")
+                        completion(.failure(Keychain.KeychainError.saveError))
+                    }
+                case .failure(let apiError):
+                    print("Something went wrong, dont get signup key")
                     completion(.failure(apiError))
                 }
             }
