@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-final class RegistrationViewController: UIViewController {
+final class SendCodeViewController: UIViewController {
     
     enum Constants {
         static let inputNumberLabelText: String = "Input your phone number"
@@ -23,14 +23,14 @@ final class RegistrationViewController: UIViewController {
         static let inputButtonBottomAnchor: CGFloat = 40
     }
     
-    private var interactor: RegistrationBusinessLogic
+    private var interactor: SendCodeBusinessLogic
     private lazy var inputNumberLabel: UILabel = UILabel()
     private lazy var inputNumberTextField: UITextField = UITextField()
     private lazy var sendButton: UIButton = UIButton(type: .system)
     
     private var isPhoneNubmerInputValid: Bool = false
     
-    init(interactor: RegistrationBusinessLogic) {
+    init(interactor: SendCodeBusinessLogic) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -111,14 +111,14 @@ final class RegistrationViewController: UIViewController {
     
     @objc
     private func sendButtonPressed() {
-        interactor.sendRegistrationRequest(
-            Registration.SendCodeRequest(
+        interactor.sendCodeRequest(
+            SendCodeModels.SendCodeRequest(
                 phone: inputNumberTextField.text!)
         )
     }
     
 }
 
-extension RegistrationViewController: UITextFieldDelegate {
+extension SendCodeViewController: UITextFieldDelegate {
     // hello world
 }

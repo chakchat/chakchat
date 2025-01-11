@@ -8,16 +8,19 @@
 import Foundation
 import UIKit
 
-protocol RegistrationBusinessLogic {
-    func sendRequest(_ request: Registration.SendCodeRequest)
+protocol SendCodeBusinessLogic {
+    func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest)
     func successTransition()
 }
 
-protocol RegistrationPresentationLogic {
+protocol SendCodePresentationLogic {
     func showError(_ error: Error)
 }
 
-protocol RegistrationWorkerLogic {
-    func sendRequest(_ request: Registration.SendCodeRequest,
+protocol SendCodeWorkerLogic {
+    func sendInRequest(_ request: SendCodeModels.SendCodeRequest,
+                     completion: @escaping (Result<Void, Error>) -> Void)
+    
+    func sendUpRequest(_ request: SendCodeModels.SendCodeRequest,
                      completion: @escaping (Result<Void, Error>) -> Void)
 }

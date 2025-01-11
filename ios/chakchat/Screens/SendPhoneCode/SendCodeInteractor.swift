@@ -7,21 +7,21 @@
 
 import Foundation
 import UIKit
-class RegistrationInteractor: RegistrationBusinessLogic {
-    
-    private var presenter: RegistrationPresentationLogic
-    private var worker: RegistrationWorkerLogic
+class SendCodeInteractor: SendCodeBusinessLogic {
+
+    private var presenter: SendCodePresentationLogic
+    private var worker: SendCodeWorkerLogic
     
     var onRouteToVerifyScreen: (() -> Void)?
     
-    init(presenter: RegistrationPresentationLogic, worker: RegistrationWorkerLogic) {
+    init(presenter: SendCodePresentationLogic, worker: SendCodeWorkerLogic) {
         self.presenter = presenter
         self.worker = worker
     }
     
-    func sendRegistrationRequest(_ request: Registration.SendCodeRequest) {
+    func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest) {
         print("Send request to worker")
-        worker.sendRequest(request) { result in
+        worker.sendInRequest(request) { result in
             switch result {
             case .success:
                 self.successTransition()

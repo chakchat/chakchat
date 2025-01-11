@@ -8,17 +8,16 @@
 import Foundation
 import UIKit
 
-enum SendPhoneCodeAssembly {
+enum SendCodeAssembly {
     static func build(with context: SignupContext, coordinator: AppCoordinator) -> UIViewController {
-        let presenter = RegistrationPresenter()
+        let presenter = SendCodePresenter()
         
-        let registrationService = RegistrationService()
+        let sendCodeService = SendCodeService()
         
-        let worker = RegistrationWorker(registrationService: registrationService,
-                                        keychainManager: context.keychainManager)
+        let worker = SendCodeWorker(sendCodeService: sendCodeService, keychainManager: context.keychainManager)
         
-        let interactor = RegistrationInteractor(presenter: presenter, worker: worker)
-        let view = RegistrationViewController(interactor: interactor)
+        let interactor = SendCodeInteractor(presenter: presenter, worker: worker)
+        let view = SendCodeViewController(interactor: interactor)
         presenter.view = view
         
         interactor.onRouteToVerifyScreen = {
