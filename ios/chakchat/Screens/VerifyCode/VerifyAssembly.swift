@@ -22,7 +22,7 @@ enum VerifyAssembly {
         
         presenter.view = view
         
-        presenter.onRouteToSignupScreen = {
+        interactor.onRouteToSignupScreen = {
             coordinator.showSignupScreen()
         }
         

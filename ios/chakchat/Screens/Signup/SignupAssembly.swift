@@ -20,7 +20,7 @@ enum SignupAssembly {
         
         presenter.view = view
         
-        presenter.onRouteToVerifyScreen = {
+        interactor.onRouteToChatScreen = {
             coordinator.finishSignupFlow()
         }
         

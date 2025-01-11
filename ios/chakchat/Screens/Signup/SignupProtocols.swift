@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 protocol SignupBusinessLogic {
     func sendSignupRequest(_ name: String, _ username: String)
+    func successTransition()
 }
 
 protocol SignupWorkerLogic {
@@ -19,6 +20,5 @@ protocol SignupWorkerLogic {
 }
 
 protocol SignupPresentationLogic {
-    func presentSuccess()
     func showError(_ error: Error)
 }
