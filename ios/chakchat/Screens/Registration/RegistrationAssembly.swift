@@ -21,7 +21,7 @@ enum RegistrationAssembly {
         let view = RegistrationViewController(interactor: interactor)
         presenter.view = view
         
-        presenter.onRouteToVerifyScreen = {
+        interactor.onRouteToVerifyScreen = {
             coordinator.showVerifyScreen()
         }
         
