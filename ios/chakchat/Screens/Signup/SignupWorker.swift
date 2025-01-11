@@ -54,7 +54,7 @@ class SignupWorker: SignupWorkerLogic {
     }
     
     func getSignupCode() -> UUID? {
-        guard let savedSignupKey = keychainManager.getUUID(key: KeychainManager.keyForSaveVerificationCode) else {
+        guard let savedSignupKey = keychainManager.getUUID(key: KeychainManager.keyForSaveSignupCode) else {
             return nil
         }
         return savedSignupKey

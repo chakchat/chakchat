@@ -7,7 +7,11 @@
 
 import Foundation
 import UIKit
-protocol SendPhoneServiceProtocols {
-    func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest,
-                         completion: @escaping (Result<SendCodeModels.SuccessSendCodeData, APIError>) -> Void)
+protocol SendCodeServiceLogic {
+    func sendCodeRequest<Request: Codable, Response: Codable>(
+        _ request: Request,
+        _ endpoint: String,
+        _ responseType: Response.Type,
+        completion: @escaping (Result<Response, APIError>) -> Void
+    )
 }
