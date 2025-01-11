@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class RegistrationPresenter: RegistrationPresentationLogic {
+class SendCodePresenter: SendCodePresentationLogic {
     
-    weak var view: RegistrationViewController?
+    weak var view: SendCodeViewController?
     
     func showError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)

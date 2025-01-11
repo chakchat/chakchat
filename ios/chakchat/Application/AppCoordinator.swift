@@ -31,7 +31,7 @@ final class AppCoordinator {
     }
     
     func showRegistrationScreen() {
-        let registrationVC = RegistrationAssembly.build(with: signupContext, coordinator: self)
+        let registrationVC = SendCodeAssembly.build(with: signupContext, coordinator: self)
         navigationController.pushViewController(registrationVC, animated: true)
     }
 

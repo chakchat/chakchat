@@ -36,7 +36,7 @@ final class VerifyWorker: VerifyWorkerLogic {
     }
     
     func getVerifyCode() -> UUID? {
-        guard let savedSignupKey = keychainManager.getUUID(key: KeychainManager.keyForSaveVerificationCode) else {
+        guard let savedSignupKey = keychainManager.getUUID(key: KeychainManager.keyForSaveSigninCode) else {
             return nil
         }
         return savedSignupKey

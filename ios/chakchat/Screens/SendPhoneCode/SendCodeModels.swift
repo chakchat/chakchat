@@ -7,13 +7,21 @@
 
 import Foundation
 import UIKit
-enum Registration {
+enum SendCodeModels {
     
     struct SendCodeRequest: Codable {
         let phone: String
     }
         
-    struct SuccessRegistrationData: Codable {
+    struct SuccessSendCodeSigninData: Codable {
+        let signinKey: UUID
+        
+        enum CodingKeys: String, CodingKey {
+            case signinKey = "signin_key"
+        }
+    }
+    
+    struct SuccessSendCodeSignupData: Codable {
         let signupKey: UUID
         
         enum CodingKeys: String, CodingKey {

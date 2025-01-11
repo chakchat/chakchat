@@ -9,8 +9,8 @@ import Foundation
 
 final class KeychainManager: KeychainManagerBusinessLogic {
     
-    static let keyForSaveVerificationCode: String = "verificationCode"
-    static let keyForSavePhoneNumber: String = "phoneNumber"
+    static let keyForSaveSigninCode: String = "signinCode"
+    static let keyForSaveSignupCode: String = "signupCode"
     static let keyForSaveAccessToken: String = "accessToken"
     static let keyForSaveRefreshToken: String = "refreshToken"
     
