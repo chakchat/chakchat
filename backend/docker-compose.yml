@@ -20,5 +20,13 @@ services:
       - redis_data:/data
     environment:
       - REDIS_PASSWORD=secret
+  sms-service-stub:
+    build:
+      context: sms-service-stub
+      dockerfile: Dockerfile
+  user-service-stub:
+    build:
+      context: user-service-stub
+      dockerfile: Dockerfile
 volumes:
   redis_data:
