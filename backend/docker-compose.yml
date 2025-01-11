@@ -20,11 +20,12 @@ services:
       - redis_data:/data
     environment:
       - REDIS_PASSWORD=secret
-  sms-service-stub:
+  sms-service-stub:  
     build:
       context: sms-service-stub
       dockerfile: Dockerfile
-  user-service-stub:
+    ports: [5023:5023]
+  user-service-stub: 
     build:
       context: user-service-stub
       dockerfile: Dockerfile

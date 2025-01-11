@@ -4,4 +4,5 @@ Start with `docker compose up --build` in the current directory. \
 TIP: \
 I made that `79*******1` is the phone of existing user. \
 `79*******0` is the phone of not existing user. \
-`79*******2` is the phone which usage will fail.
+`79*******2` is the phone which usage will fail. \
+Use GET /sms/{phone} to get sms sent to phone. \
