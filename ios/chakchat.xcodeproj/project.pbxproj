@@ -54,6 +54,10 @@
 		AA9B628B2D303FB50064CB23 /* SignupServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628A2D303FB50064CB23 /* SignupServiceProtocols.swift */; };
 		AA9B628D2D3149B60064CB23 /* ApiErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */; };
 		AA9B628F2D3152570064CB23 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628E2D3152570064CB23 /* Sender.swift */; };
+		AA9B62922D31614A0064CB23 /* SigninSendPhoneCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62912D31614A0064CB23 /* SigninSendPhoneCodeService.swift */; };
+		AA9B62942D31615A0064CB23 /* SigninSendPhoneCodeServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62932D31615A0064CB23 /* SigninSendPhoneCodeServiceProtocols.swift */; };
+		AA9B62962D3162C70064CB23 /* SigninSendPhoneCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62952D3162C70064CB23 /* SigninSendPhoneCodeModel.swift */; };
+		AA9B62982D3163CA0064CB23 /* SigninEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +110,10 @@
 		AA9B628A2D303FB50064CB23 /* SignupServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupServiceProtocols.swift; sourceTree = "<group>"; };
 		AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrorTypes.swift; sourceTree = "<group>"; };
 		AA9B628E2D3152570064CB23 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		AA9B62912D31614A0064CB23 /* SigninSendPhoneCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSendPhoneCodeService.swift; sourceTree = "<group>"; };
+		AA9B62932D31615A0064CB23 /* SigninSendPhoneCodeServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSendPhoneCodeServiceProtocols.swift; sourceTree = "<group>"; };
+		AA9B62952D3162C70064CB23 /* SigninSendPhoneCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSendPhoneCodeModel.swift; sourceTree = "<group>"; };
+		AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +209,7 @@
 		AA9B62372D2D75050064CB23 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B62902D31611C0064CB23 /* SigninSendPhoneCodeService */,
 				AA9B62872D303F9C0064CB23 /* SignupService */,
 				AA9B625D2D2FC6E70064CB23 /* VerificationService */,
 				AA9B623A2D2D75620064CB23 /* RegistrationService */,
@@ -282,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9B62632D2FCA930064CB23 /* SignupEndpoints.swift */,
+				AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -332,6 +342,16 @@
 				AA9B628A2D303FB50064CB23 /* SignupServiceProtocols.swift */,
 			);
 			path = SignupService;
+			sourceTree = "<group>";
+		};
+		AA9B62902D31611C0064CB23 /* SigninSendPhoneCodeService */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B62952D3162C70064CB23 /* SigninSendPhoneCodeModel.swift */,
+				AA9B62912D31614A0064CB23 /* SigninSendPhoneCodeService.swift */,
+				AA9B62932D31615A0064CB23 /* SigninSendPhoneCodeServiceProtocols.swift */,
+			);
+			path = SigninSendPhoneCodeService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,8 +428,10 @@
 				AA9B62342D2D71A30064CB23 /* RegistrationPhoneValidator.swift in Sources */,
 				AA9B62692D2FD2390064CB23 /* SignupInteractor.swift in Sources */,
 				AA9B62482D2EC78F0064CB23 /* VerifyInteractor.swift in Sources */,
+				AA9B62922D31614A0064CB23 /* SigninSendPhoneCodeService.swift in Sources */,
 				AA9B628F2D3152570064CB23 /* Sender.swift in Sources */,
 				AA9B623E2D2D75890064CB23 /* RegistrationService.swift in Sources */,
+				AA9B62942D31615A0064CB23 /* SigninSendPhoneCodeServiceProtocols.swift in Sources */,
 				AA9B62292D2D6C970064CB23 /* RegistrationPresenter.swift in Sources */,
 				AA9B626F2D2FD2660064CB23 /* SignupModels.swift in Sources */,
 				AA9B62252D2D6C490064CB23 /* RegistrationAssembly.swift in Sources */,
@@ -433,8 +455,10 @@
 				AA9B622F2D2D6CB90064CB23 /* RegistrationProtocols.swift in Sources */,
 				AA9B62432D2EC4840064CB23 /* KeychainManagerProtocol.swift in Sources */,
 				AA9B62642D2FCA930064CB23 /* SignupEndpoints.swift in Sources */,
+				AA9B62982D3163CA0064CB23 /* SigninEndpoints.swift in Sources */,
 				AA9B626B2D2FD2470064CB23 /* SignupPresenter.swift in Sources */,
 				AA9B62362D2D72E30064CB23 /* RegistrationWorker.swift in Sources */,
+				AA9B62962D3162C70064CB23 /* SigninSendPhoneCodeModel.swift in Sources */,
 				AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */,
 				AA9B62572D2EDF900064CB23 /* SuccessModels.swift in Sources */,
 				AA9B62322D2D71670064CB23 /* ValidatorsProtocols.swift in Sources */,
