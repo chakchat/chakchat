@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-protocol RegistrationValidator {
+protocol SendCodeValidator {
     func validate(_ value: String) -> Bool
 }
 
