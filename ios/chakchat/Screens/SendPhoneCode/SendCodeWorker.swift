@@ -22,8 +22,9 @@ final class SendCodeWorker: SendCodeWorkerLogic {
         print("Send request to service")
         sendCodeService.sendCodeRequest(request,
                                         SigninEndpoints.sendPhoneCodeEndpoint.rawValue,
-                                        SuccessModels.SendCodeSigninData.self) { result in
+                                        SuccessModels.SendCodeSigninData.self) { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else {return}
                 switch result {
                 case .success(let successResponse):
                     let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveSigninCode,
@@ -50,8 +51,9 @@ final class SendCodeWorker: SendCodeWorkerLogic {
                        completion: @escaping (Result<AppState, Error>) -> Void) {
         sendCodeService.sendCodeRequest(request,
                                         SignupEndpoints.sendPhoneCodeEndpoint.rawValue,
-                                        SuccessModels.SendCodeSignupData.self) { result in
+                                        SuccessModels.SendCodeSignupData.self) { [weak self]result in
             DispatchQueue.main.async {
+                guard let self = self else {return}
                 switch result {
                 case .success(let successResponse):
                     let isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveSignupCode,

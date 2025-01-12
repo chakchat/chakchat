@@ -27,7 +27,8 @@ final class VerifyInteractor: VerifyBusinessLogic {
         print("Send request to worker")
         if (state == AppState.signin) {
             let key = worker.getVerifyCode(KeychainManager.keyForSaveSigninCode)
-            worker.sendVerificationRequest(Verify.VerifySigninRequest(signinKey: key!, code: code),                 SigninEndpoints.signinEndpoint.rawValue, SuccessModels.Tokens.self) { result in
+            worker.sendVerificationRequest(Verify.VerifySigninRequest(signinKey: key!, code: code),                 SigninEndpoints.signinEndpoint.rawValue, SuccessModels.Tokens.self) { [weak self] result in
+                guard let self = self else {return}
                 switch result {
                 case .success(let state):
                     self.routeToChatScreen(state)
@@ -38,7 +39,8 @@ final class VerifyInteractor: VerifyBusinessLogic {
             }
         } else if (state == AppState.signupVerifyCode) {
             let key = worker.getVerifyCode(KeychainManager.keyForSaveSignupCode)
-            worker.sendVerificationRequest(Verify.VerifySignupRequest(signupKey: key!, code: code), SignupEndpoints.verifyCodeEndpoint.rawValue, SuccessModels.VerifySignupData.self) { result in
+            worker.sendVerificationRequest(Verify.VerifySignupRequest(signupKey: key!, code: code), SignupEndpoints.verifyCodeEndpoint.rawValue, SuccessModels.VerifySignupData.self) { [weak self] result in
+                guard let self = self else {return}
                 switch result {
                 case .success(let state):
                     self.routeToSignupScreen(state)
