@@ -27,8 +27,9 @@ class SendCodeInteractor: SendCodeBusinessLogic {
             switch result {
             case .success(let state):
                 self.successTransition(state)
-            case .failure(let apiError):
-                self.presenter.showError(apiError)
+            case .failure(let error):
+                ErrorHandler.handleError(error)
+                self.presenter.showError(error)
             }
         }
     }

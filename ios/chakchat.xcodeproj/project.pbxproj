@@ -56,6 +56,7 @@
 		AA9B628F2D3152570064CB23 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628E2D3152570064CB23 /* Sender.swift */; };
 		AA9B62982D3163CA0064CB23 /* SigninEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */; };
 		AA9B62A12D32DFC60064CB23 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62A02D32DFC60064CB23 /* StateMachine.swift */; };
+		AA9B62A32D33D6B50064CB23 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62A22D33D6B50064CB23 /* ErrorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		AA9B628E2D3152570064CB23 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninEndpoints.swift; sourceTree = "<group>"; };
 		AA9B62A02D32DFC60064CB23 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		AA9B62A22D33D6B50064CB23 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				AA9B62552D2EDF810064CB23 /* ResponseModels */,
 				AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */,
 				AA9B628E2D3152570064CB23 /* Sender.swift */,
+				AA9B62A22D33D6B50064CB23 /* ErrorHandler.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				AA9B62712D2FD2700064CB23 /* SignupProtocols.swift in Sources */,
 				AA9B62232D2D605A0064CB23 /* UIView + Pin.swift in Sources */,
 				AA9B628B2D303FB50064CB23 /* SignupServiceProtocols.swift in Sources */,
+				AA9B62A32D33D6B50064CB23 /* ErrorHandler.swift in Sources */,
 				AA9B627B2D3004850064CB23 /* SignupWorker.swift in Sources */,
 				AA9B62592D2EDF9F0064CB23 /* ErrorModels.swift in Sources */,
 				AA9B62412D2EC0170064CB23 /* KeychainManager.swift in Sources */,

@@ -31,8 +31,9 @@ final class VerifyInteractor: VerifyBusinessLogic {
                 switch result {
                 case .success(let state):
                     self.routeToChatScreen(state)
-                case .failure(let apiError):
-                    self.presentor.showError(apiError)
+                case .failure(let error):
+                    ErrorHandler.handleError(error)
+                    self.presentor.showError(error)
                 }
             }
         } else if (state == AppState.signupVerifyCode) {
@@ -41,8 +42,9 @@ final class VerifyInteractor: VerifyBusinessLogic {
                 switch result {
                 case .success(let state):
                     self.routeToSignupScreen(state)
-                case .failure(let apiError):
-                    self.presentor.showError(apiError)
+                case .failure(let error):
+                    ErrorHandler.handleError(error)
+                    self.presentor.showError(error)
                 }
             }
         }

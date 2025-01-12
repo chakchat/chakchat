@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-enum ApiErrorType: String {
+enum ApiErrorType: String, Codable {
     case internalError = "internal"
     case invalidJson = "invalid_json"
     case validationFailed = "validation_failed"
@@ -27,3 +27,15 @@ enum ApiErrorType: String {
     case signupKeyNotFound = "signup_key_not_found"
     case usernameAlreadyExists = "username_already_exists"
 }
+
+enum APIError: Error {
+    case invalidURL
+    case invalidRequest
+    case networkError(Error)
+    case invalidResponse
+    case noData
+    case decodingError(Error)
+    case apiError(APIErrorResponse)
+    case unknown
+}
+

@@ -8,18 +8,7 @@
 import Foundation
 import UIKit
 
-enum APIError: Error {
-    case invalidURL
-    case invalidRequest
-    case networkError(Error)
-    case invalidResponse
-    case noData
-    case decodingError(Error)
-    case apiError(APIErrorResponse)
-    case unknown
-}
-
-struct APIErrorResponse: Codable {
+struct APIErrorResponse: Codable, Error {
     let errorType: String
     let errorMessage: String
     let errorDetails: [ErrorDetail]?

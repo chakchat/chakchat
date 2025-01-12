@@ -28,10 +28,9 @@ class SignupInteractor: SignupBusinessLogic {
             worker.sendRequest(Signup.SignupRequest(signupKey: signupKey, name: name, username: username)) { result in
                 switch result {
                 case .success(let state):
-                    print("Succes")
                     self.successTransition(state)
                 case .failure(let error):
-                    print("Error: \(error)")
+                    ErrorHandler.handleError(error)
                     self.presenter.showError(error)
                 }
             }

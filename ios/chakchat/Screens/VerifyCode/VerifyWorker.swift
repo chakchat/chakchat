@@ -48,23 +48,17 @@ final class VerifyWorker: VerifyWorkerLogic {
     
     func saveToken(_ response: SuccessModels.Tokens, 
                    completion: @escaping (Result<AppState, Error>) -> Void) {
-        print("Verification is success, try to save tokens")
         var isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveAccessToken,
                                            value: response.accessToken)
-        if isSaved {
-            print("Access token is saved in keychain storage")
-        } else {
-            print("Cant save access token in keychain storage")
+        if !isSaved {
             completion(.failure(Keychain.KeychainError.saveError))
         }
         
         isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveRefreshToken,
                                             value: response.refreshToken)
         if isSaved {
-            print("Refresh token is saved in keychain storage")
             completion(.success(AppState._default))
         } else {
-            print("Cant save refresh token in keychain storage")
             completion(.failure(Keychain.KeychainError.saveError))
         }
     }
