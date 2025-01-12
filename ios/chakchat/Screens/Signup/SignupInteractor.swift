@@ -25,7 +25,8 @@ class SignupInteractor: SignupBusinessLogic {
         print("Send request to worker")
         let signupKey: UUID! = worker.getSignupCode()
         if signupKey != nil {
-            worker.sendRequest(Signup.SignupRequest(signupKey: signupKey, name: name, username: username)) { result in
+            worker.sendRequest(Signup.SignupRequest(signupKey: signupKey, name: name, username: username)) { [weak self] result in
+                guard let self = self else {return}
                 switch result {
                 case .success(let state):
                     self.successTransition(state)

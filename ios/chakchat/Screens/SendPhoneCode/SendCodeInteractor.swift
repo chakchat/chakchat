@@ -23,7 +23,8 @@ class SendCodeInteractor: SendCodeBusinessLogic {
     
     func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest) {
         print("Send request to worker")
-        worker.sendInRequest(request) { result in
+        worker.sendInRequest(request) { [weak self] result in
+            guard let self = self else {return}
             switch result {
             case .success(let state):
                 self.successTransition(state)
