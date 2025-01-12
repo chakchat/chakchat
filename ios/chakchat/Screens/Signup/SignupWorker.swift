@@ -27,7 +27,6 @@ class SignupWorker: SignupWorkerLogic {
                     self.saveToken(successResponse, completion: completion)
                     completion(.success(AppState._default))
                 case .failure(let apiError):
-                    print("Something went wrong: \(apiError)")
                     completion(.failure(apiError))
                 }
             }
@@ -43,13 +42,9 @@ class SignupWorker: SignupWorkerLogic {
     
     func saveToken(_ successResponse: SuccessModels.Tokens,
                    completion: @escaping (Result<AppState, Error>) -> Void) {
-        print("Access token: \(successResponse.accessToken)\nRefresh token: \(successResponse.refreshToken)")
         var isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveAccessToken,
                                            value: successResponse.accessToken)
-        if isSaved {
-            print("Access token is saved in keychain storage")
-        } else {
-            print("Something went wrong, access token isnt saved in keychain storage")
+        if !isSaved {
             completion(.failure(Keychain.KeychainError.saveError))
         }
         
@@ -57,9 +52,8 @@ class SignupWorker: SignupWorkerLogic {
                                             value: successResponse.refreshToken)
         
         if isSaved {
-            print("Refresh token is saved in keychain storage")
+            completion(.success(AppState._default))
         } else {
-            print("Something went wrong, refresh token isnt saved in keychain storage")
             completion(.failure(Keychain.KeychainError.saveError))
         }
     }
