@@ -18,11 +18,11 @@ final class SendCodeWorker: SendCodeWorkerLogic {
     }
     
     func sendInRequest(_ request: SendCodeModels.SendCodeRequest,
-                     completion: @escaping (Result<Void, Error>) -> Void) {
+                     completion: @escaping (Result<AppState, Error>) -> Void) {
         print("Send request to service")
         sendCodeService.sendCodeRequest(request,
                                         SigninEndpoints.sendPhoneCodeEndpoint.rawValue,
-                                        SendCodeModels.SuccessSendCodeSigninData.self) { result in
+                                        SuccessModels.SendCodeSigninData.self) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
@@ -31,7 +31,7 @@ final class SendCodeWorker: SendCodeWorkerLogic {
                                                        value: successResponse.signinKey)
                     if isSaved {
                         print("Saved signin key in keychain storage")
-                        completion(.success(()))
+                        completion(.success(AppState.signin))
                     } else {
                         print("Something went wrong, signin isnt saved in keychain storage")
                         completion(.failure(Keychain.KeychainError.saveError))
@@ -51,9 +51,10 @@ final class SendCodeWorker: SendCodeWorkerLogic {
     }
     
     func sendUpRequest(_ request: SendCodeModels.SendCodeRequest,
-                       completion: @escaping (Result<Void, Error>) -> Void) {
+                       completion: @escaping (Result<AppState, Error>) -> Void) {
         sendCodeService.sendCodeRequest(request,
-                                        SignupEndpoints.sendPhoneCodeEndpoint.rawValue, SendCodeModels.SuccessSendCodeSignupData.self) { result in
+                                        SignupEndpoints.sendPhoneCodeEndpoint.rawValue,
+                                        SuccessModels.SendCodeSignupData.self) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let successResponse):
@@ -62,7 +63,7 @@ final class SendCodeWorker: SendCodeWorkerLogic {
                                                        value: successResponse.signupKey)
                     if isSaved {
                         print("Saved signup key in keychain storage")
-                        completion(.success(()))
+                        completion(.success(AppState.signupVerifyCode))
                     } else {
                         print("Something went wrong, signup isnt saved in keychain storage")
                         completion(.failure(Keychain.KeychainError.saveError))

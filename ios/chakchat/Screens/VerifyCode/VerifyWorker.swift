@@ -18,27 +18,54 @@ final class VerifyWorker: VerifyWorkerLogic {
         self.verificationService = verificationService
     }
     
-    func sendRequest(_ request: Verify.VerifyCodeRequest,
-                     completion: @escaping (Result<Void, Error>) -> Void) {
+    func sendVerificationRequest<Request, Response>(_ request: Request, _ endpoint: String, _ responseType: Response.Type, completion: @escaping (Result<AppState, any Error>) -> Void) where Request : Decodable, Request : Encodable, Response : Decodable, Response : Encodable {
         print("Send request to service")
-        
-        verificationService.sendVerificationRequest(request) { result in
+        verificationService.sendVerificationRequest(request,
+                                                    endpoint,
+                                                    responseType) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(_):
-                    completion(.success(()))
+                case .success(let successResponse):
+                    guard let successResponse = successResponse as? SuccessModels.Tokens else {
+                        completion(.success(AppState.signup))
+                        return
+                    }
+                    self.saveToken(successResponse, completion: completion)
+                    completion(.success(AppState._default))
                 case .failure(let apiError):
-                    print("Something went wrong: \(apiError)")
                     completion(.failure(apiError))
                 }
             }
         }
     }
     
-    func getVerifyCode() -> UUID? {
-        guard let savedSignupKey = keychainManager.getUUID(key: KeychainManager.keyForSaveSigninCode) else {
+    func getVerifyCode(_ key: String) -> UUID? {
+        guard let savedKey = keychainManager.getUUID(key: key) else {
             return nil
         }
-        return savedSignupKey
+        return savedKey
+    }
+    
+    func saveToken(_ response: SuccessModels.Tokens, 
+                   completion: @escaping (Result<AppState, Error>) -> Void) {
+        print("Verification is success, try to save tokens")
+        var isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveAccessToken,
+                                           value: response.accessToken)
+        if isSaved {
+            print("Access token is saved in keychain storage")
+        } else {
+            print("Cant save access token in keychain storage")
+            completion(.failure(Keychain.KeychainError.saveError))
+        }
+        
+        isSaved = self.keychainManager.save(key: KeychainManager.keyForSaveRefreshToken,
+                                            value: response.refreshToken)
+        if isSaved {
+            print("Refresh token is saved in keychain storage")
+            completion(.success(AppState._default))
+        } else {
+            print("Cant save refresh token in keychain storage")
+            completion(.failure(Keychain.KeychainError.saveError))
+        }
     }
 }

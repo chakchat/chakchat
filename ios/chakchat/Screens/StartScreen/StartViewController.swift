@@ -18,7 +18,7 @@ final class StartViewController: UIViewController {
     }
     
     private lazy var startMessengerButton: UIButton = UIButton(type: .system)
-    var onRouteToRegistrationScreen: (() -> Void)?
+    var onRouteToSendCodeScreen: ((AppState) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,6 @@ final class StartViewController: UIViewController {
     
     @objc
     private func startMessengerButtonPressed() {
-        onRouteToRegistrationScreen?()
+        onRouteToSendCodeScreen?(AppState.sendPhoneCode)
     }
 }

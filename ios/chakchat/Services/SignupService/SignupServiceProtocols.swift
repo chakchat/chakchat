@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 protocol SignupServiceLogic {
     func sendSignupRequest(_ request: Signup.SignupRequest,
-                           completion: @escaping (Result<Signup.SuccessSignupData, APIError>) -> Void)
+                           completion: @escaping (Result<SuccessModels.Tokens, APIError>) -> Void)
 }
