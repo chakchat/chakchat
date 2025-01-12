@@ -16,11 +16,13 @@ enum SendCodeAssembly {
         
         let worker = SendCodeWorker(sendCodeService: sendCodeService, keychainManager: context.keychainManager)
         
-        let interactor = SendCodeInteractor(presenter: presenter, worker: worker)
+        let interactor = SendCodeInteractor(presenter: presenter, worker: worker, state: context.state)
         let view = SendCodeViewController(interactor: interactor)
         presenter.view = view
         
-        interactor.onRouteToVerifyScreen = {
+        interactor.onRouteToVerifyScreen = { state in
+            context.state = state
+            print(state)
             coordinator.showVerifyScreen()
         }
         
