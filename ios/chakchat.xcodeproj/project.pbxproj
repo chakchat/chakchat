@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA8316482D344B740029325C /* Micro5-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA8316452D344AE50029325C /* Micro5-Regular.ttf */; };
 		AA9B62082D2D47CB0064CB23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62072D2D47CB0064CB23 /* AppDelegate.swift */; };
 		AA9B620A2D2D47CB0064CB23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */; };
 		AA9B62112D2D47CE0064CB23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9B62102D2D47CE0064CB23 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA8316452D344AE50029325C /* Micro5-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Micro5-Regular.ttf"; sourceTree = "<group>"; };
 		AA9B62042D2D47CB0064CB23 /* chakchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chakchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9B62072D2D47CB0064CB23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA9B62092D2D47CB0064CB23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA8316412D3447600029325C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AA8316422D3447680029325C /* Fonts */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AA8316422D3447680029325C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AA8316452D344AE50029325C /* Micro5-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AA9B61FB2D2D47CB0064CB23 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +185,7 @@
 				AA9B62652D2FD2190064CB23 /* Signup */,
 				AA9B62442D2EC76A0064CB23 /* VerifyCode */,
 				AA9B621E2D2D5E790064CB23 /* SendPhoneCode */,
+				AA8316412D3447600029325C /* UI */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -403,6 +422,7 @@
 			files = (
 				AA9B62112D2D47CE0064CB23 /* Assets.xcassets in Resources */,
 				AA9B62142D2D47CE0064CB23 /* Base in Resources */,
+				AA8316482D344B740029325C /* Micro5-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
