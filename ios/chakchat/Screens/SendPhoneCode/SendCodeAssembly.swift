@@ -20,10 +20,10 @@ enum SendCodeAssembly {
         let view = SendCodeViewController(interactor: interactor)
         presenter.view = view
         
-        interactor.onRouteToVerifyScreen = { state in
-            context.state = state
+        interactor.onRouteToVerifyScreen = { [weak context, weak coordinator] state in
+            context?.state = state
             print(state)
-            coordinator.showVerifyScreen()
+            coordinator?.showVerifyScreen()
         }
         
         return view

@@ -20,10 +20,10 @@ enum SignupAssembly {
         
         presenter.view = view
         
-        interactor.onRouteToChatScreen = { state in
-            context.state = state
+        interactor.onRouteToChatScreen = { [weak context, weak coordinator] state in
+            context?.state = state
             print(state)
-            coordinator.finishSignupFlow()
+            coordinator?.finishSignupFlow()
         }
         
         return view

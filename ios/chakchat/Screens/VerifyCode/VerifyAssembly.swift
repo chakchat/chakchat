@@ -22,22 +22,22 @@ enum VerifyAssembly {
         
         presenter.view = view
         
-        interactor.onRouteToSignupScreen = { state in
-            context.state = state
+        interactor.onRouteToSignupScreen = { [weak context, weak coordinator] state in
+            context?.state = state
             print(state)
-            coordinator.showSignupScreen()
+            coordinator?.showSignupScreen()
         }
         
-        interactor.onRouteToChatScreen = { state in
-            context.state = state
+        interactor.onRouteToChatScreen = { [weak context, weak coordinator] state in
+            context?.state = state
             print(state)
-            coordinator.finishSignupFlow()
+            coordinator?.finishSignupFlow()
         }
         
-        interactor.onRouteToSendCodeScreen = { state in
-            context.state = state
+        interactor.onRouteToSendCodeScreen = { [weak context, weak coordinator] state in
+            context?.state = state
             print(state)
-            coordinator.popScreen()
+            coordinator?.popScreen()
         }
         
         return view
