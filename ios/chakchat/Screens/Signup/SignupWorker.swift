@@ -20,8 +20,9 @@ class SignupWorker: SignupWorkerLogic {
     func sendRequest(_ request: Signup.SignupRequest, completion: @escaping (Result<AppState, Error>) -> Void) {
         print("Send request to service")
         
-        signupService.sendSignupRequest(request) { result in
+        signupService.sendSignupRequest(request) { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else {return}
                 switch result {
                 case .success(let successResponse):
                     self.saveToken(successResponse, completion: completion)

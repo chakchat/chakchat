@@ -22,8 +22,9 @@ final class VerifyWorker: VerifyWorkerLogic {
         print("Send request to service")
         verificationService.sendVerificationRequest(request,
                                                     endpoint,
-                                                    responseType) { result in
+                                                    responseType) { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else {return}
                 switch result {
                 case .success(let successResponse):
                     guard let successResponse = successResponse as? SuccessModels.Tokens else {
