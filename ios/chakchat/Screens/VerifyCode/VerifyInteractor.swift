@@ -11,34 +11,52 @@ final class VerifyInteractor: VerifyBusinessLogic {
     
     private var presentor: VerifyPresentationLogic
     private var worker: VerifyWorkerLogic
+    var state: AppState
     
-    var onRouteToSignupScreen: (() -> Void)?
+    var onRouteToSignupScreen: ((AppState) -> Void)?
+    var onRouteToChatScreen: ((AppState) -> Void)?
+    var onRouteToSendCodeScreen: ((AppState) -> Void)?
     
-    init(presentor: VerifyPresentationLogic, worker: VerifyWorkerLogic) {
+    init(presentor: VerifyPresentationLogic, worker: VerifyWorkerLogic, state: AppState) {
         self.presentor = presentor
         self.worker = worker
+        self.state = state
     }
     
     func sendVerificationRequest(_ code: String) {
         print("Send request to worker")
-        let signupKey: UUID! = worker.getVerifyCode()
-        if signupKey != nil {
-            worker.sendRequest(Verify.VerifyCodeRequest(signupKey: signupKey, code: code)) { result in
+        if (state == AppState.signin) {
+            let key = worker.getVerifyCode(KeychainManager.keyForSaveSigninCode)
+            worker.sendVerificationRequest(Verify.VerifySigninRequest(signinKey: key!, code: code),                 SigninEndpoints.signinEndpoint.rawValue, SuccessModels.Tokens.self) { result in
                 switch result {
-                case .success:
-                    print("Succes")
-                    self.successTransition()
-                case .failure(let error):
-                    print("Error: \(error)")
-                    self.presentor.showError(error)
+                case .success(let state):
+                    self.routeToChatScreen(state)
+                case .failure(let apiError):
+                    self.presentor.showError(apiError)
                 }
             }
-        } else {
-            print("Cant find signupKey in keychain")
+        } else if (state == AppState.signupVerifyCode) {
+            let key = worker.getVerifyCode(KeychainManager.keyForSaveSignupCode)
+            worker.sendVerificationRequest(Verify.VerifySignupRequest(signupKey: key!, code: code), SignupEndpoints.verifyCodeEndpoint.rawValue, SuccessModels.VerifySignupData.self) { result in
+                switch result {
+                case .success(let state):
+                    self.routeToSignupScreen(state)
+                case .failure(let apiError):
+                    self.presentor.showError(apiError)
+                }
+            }
         }
     }
     
-    func successTransition() {
-        onRouteToSignupScreen?()
+    func routeToSignupScreen(_ state: AppState) {
+        onRouteToSignupScreen?(state)
+    }
+    
+    func routeToChatScreen(_ state: AppState) {
+        onRouteToChatScreen?(state)
+    }
+    
+    func routeToSendCodeScreen(_ state: AppState) {
+        onRouteToSendCodeScreen?(state)
     }
 }

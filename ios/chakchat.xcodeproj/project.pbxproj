@@ -55,6 +55,7 @@
 		AA9B628D2D3149B60064CB23 /* ApiErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */; };
 		AA9B628F2D3152570064CB23 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B628E2D3152570064CB23 /* Sender.swift */; };
 		AA9B62982D3163CA0064CB23 /* SigninEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */; };
+		AA9B62A12D32DFC60064CB23 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B62A02D32DFC60064CB23 /* StateMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		AA9B628C2D3149B60064CB23 /* ApiErrorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrorTypes.swift; sourceTree = "<group>"; };
 		AA9B628E2D3152570064CB23 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		AA9B62972D3163CA0064CB23 /* SigninEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninEndpoints.swift; sourceTree = "<group>"; };
+		AA9B62A02D32DFC60064CB23 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9B62822D302F150064CB23 /* AppCoordinator.swift */,
+				AA9B62A02D32DFC60064CB23 /* StateMachine.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				AA9B62862D303E330064CB23 /* StartAssembly.swift in Sources */,
 				AA9B62892D303FAA0064CB23 /* SignupService.swift in Sources */,
 				AA9B62802D3018CB0064CB23 /* SignupContext.swift in Sources */,
+				AA9B62A12D32DFC60064CB23 /* StateMachine.swift in Sources */,
 				AA9B625B2D2EE5620064CB23 /* VerificationCodeValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

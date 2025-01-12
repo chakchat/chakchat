@@ -10,7 +10,7 @@ import UIKit
 
 protocol SendCodeBusinessLogic {
     func sendCodeRequest(_ request: SendCodeModels.SendCodeRequest)
-    func successTransition()
+    func successTransition(_ state: AppState)
 }
 
 protocol SendCodePresentationLogic {
@@ -19,8 +19,8 @@ protocol SendCodePresentationLogic {
 
 protocol SendCodeWorkerLogic {
     func sendInRequest(_ request: SendCodeModels.SendCodeRequest,
-                     completion: @escaping (Result<Void, Error>) -> Void)
+                     completion: @escaping (Result<AppState, Error>) -> Void)
     
     func sendUpRequest(_ request: SendCodeModels.SendCodeRequest,
-                     completion: @escaping (Result<Void, Error>) -> Void)
+                     completion: @escaping (Result<AppState, Error>) -> Void)
 }

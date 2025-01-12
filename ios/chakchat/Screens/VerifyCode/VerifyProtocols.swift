@@ -10,7 +10,9 @@ import UIKit
 
 protocol VerifyBusinessLogic {
     func sendVerificationRequest(_ code: String)
-    func successTransition()
+    func routeToSignupScreen(_ state: AppState)
+    func routeToChatScreen(_ state: AppState)
+    func routeToSendCodeScreen(_ state: AppState)
 }
 
 protocol VerifyPresentationLogic {
@@ -18,7 +20,11 @@ protocol VerifyPresentationLogic {
 }
 
 protocol VerifyWorkerLogic {
-    func sendRequest(_ request: Verify.VerifyCodeRequest,
-                     completion: @escaping (Result<Void, Error>) -> Void)
-    func getVerifyCode() -> UUID?
+    func sendVerificationRequest<Request: Codable, Response: Codable>(
+        _ request: Request,
+        _ endpoint: String,
+        _ responseType: Response.Type,
+        completion: @escaping (Result<AppState, Error>) -> Void
+    )
+    func getVerifyCode(_ key: String) -> UUID?
 }

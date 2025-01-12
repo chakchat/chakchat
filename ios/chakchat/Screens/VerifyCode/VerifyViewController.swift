@@ -42,6 +42,8 @@ final class VerifyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonPressed))
+        navigationItem.leftBarButtonItem = backButton
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -108,6 +110,11 @@ final class VerifyViewController: UIViewController {
     @objc
     private func sendButtonPressed() {
         interactor.sendVerificationRequest(inputTextField.text!)
+    }
+    
+    @objc
+    private func backButtonPressed() {
+        interactor.routeToSendCodeScreen(AppState.sendPhoneCode)
     }
     
     @objc

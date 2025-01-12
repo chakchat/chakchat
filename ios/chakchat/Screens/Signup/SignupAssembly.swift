@@ -14,13 +14,15 @@ enum SignupAssembly {
         
         let worker = SignupWorker(keychainManager: context.keychainManager, signupService: signupService)
         
-        let interactor = SignupInteractor(presenter: presenter, worker: worker)
+        let interactor = SignupInteractor(presenter: presenter, worker: worker, state: context.state)
         
         let view = SignupViewController(interactor: interactor)
         
         presenter.view = view
         
-        interactor.onRouteToChatScreen = {
+        interactor.onRouteToChatScreen = { state in
+            context.state = state
+            print(state)
             coordinator.finishSignupFlow()
         }
         

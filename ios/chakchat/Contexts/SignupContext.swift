@@ -10,8 +10,10 @@ import UIKit
 final class SignupContext {
     
     let keychainManager: KeychainManagerBusinessLogic
+    var state: AppState
     
-    init(keychainManager: KeychainManagerBusinessLogic) {
+    init(keychainManager: KeychainManagerBusinessLogic, state: AppState) {
         self.keychainManager = keychainManager
+        self.state = state
     }
 }

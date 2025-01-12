@@ -16,7 +16,7 @@ final class AppCoordinator {
     init(window: UIWindow) {
         self.window = window
         self.navigationController = UINavigationController()
-        self.signupContext = SignupContext(keychainManager: KeychainManager())
+        self.signupContext = SignupContext(keychainManager: KeychainManager(), state: AppState._default)
     }
 
     func start() {
@@ -25,7 +25,7 @@ final class AppCoordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
-
+    
     private func CreateStartScreen() -> UIViewController {
         return StartAssembly.build(with: signupContext, coordinator: self)
     }
@@ -48,6 +48,10 @@ final class AppCoordinator {
     func finishSignupFlow() {
         let chatVC = CreateChatScreen()
         navigationController.setViewControllers([chatVC], animated: true)
+    }
+    
+    func popScreen() {
+        navigationController.popViewController(animated: true)
     }
 
     private func CreateChatScreen() -> UIViewController {

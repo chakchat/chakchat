@@ -16,14 +16,28 @@ enum VerifyAssembly {
         
         let worker = VerifyWorker(keychainManager: context.keychainManager,
                                   verificationService: verificationService)
-        let interactor = VerifyInteractor(presentor: presenter, worker: worker)
+        let interactor = VerifyInteractor(presentor: presenter, worker: worker, state: context.state)
         
         let view = VerifyViewController(interactor: interactor)
         
         presenter.view = view
         
-        interactor.onRouteToSignupScreen = {
+        interactor.onRouteToSignupScreen = { state in
+            context.state = state
+            print(state)
             coordinator.showSignupScreen()
+        }
+        
+        interactor.onRouteToChatScreen = { state in
+            context.state = state
+            print(state)
+            coordinator.finishSignupFlow()
+        }
+        
+        interactor.onRouteToSendCodeScreen = { state in
+            context.state = state
+            print(state)
+            coordinator.popScreen()
         }
         
         return view
