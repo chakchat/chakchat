@@ -10,7 +10,7 @@ import UIKit
 final class SignupService: SignupServiceLogic {
     
     func sendSignupRequest(_ request: Signup.SignupRequest,
-                           completion: @escaping (Result<SuccessModels.Tokens, APIError>) -> Void) {
+                           completion: @escaping (Result<SuccessModels.Tokens, Error>) -> Void) {
         Sender.send(
             requestBody: request,
             responseType: SuccessModels.Tokens.self,
