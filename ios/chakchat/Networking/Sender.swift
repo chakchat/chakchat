@@ -12,7 +12,7 @@ final class Sender {
         requestBody: T,
         responseType: U.Type,
         endpoint: String,
-        completion: @escaping (Result<U, APIError>) -> Void
+        completion: @escaping (Result<U, Error>) -> Void
     ) {
         guard let url = URL(string: endpoint) else {
             completion(.failure(APIError.invalidURL))
@@ -58,7 +58,9 @@ final class Sender {
             default:
                 do {
                     let errorResponse = try JSONDecoder().decode(APIErrorResponse.self, from: data)
-                    completion(.failure(APIError.apiError(errorResponse)))
+                    completion(.failure(APIErrorResponse(errorType: errorResponse.errorType,
+                                                         errorMessage: errorResponse.errorMessage,
+                                                         errorDetails: errorResponse.errorDetails)))
                 } catch {
                     completion(.failure(APIError.decodingError(error)))
                 }

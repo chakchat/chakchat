@@ -70,9 +70,6 @@ final class ErrorHandler {
             
         case .unknown:
             print("Error: An unknown error occurred.")
-            
-        default:
-            print("Error: Mysterious error")
         }
     }
 

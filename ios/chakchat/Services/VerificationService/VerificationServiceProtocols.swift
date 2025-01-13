@@ -12,6 +12,6 @@ protocol VerificationServiceLogic {
         _ request: Request,
         _ endpoint: String,
         _ responseType: Response.Type,
-        completion: @escaping (Result<Response, APIError>) -> Void
+        completion: @escaping (Result<Response, Error>) -> Void
     )
 }

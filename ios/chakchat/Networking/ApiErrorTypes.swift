@@ -35,7 +35,6 @@ enum APIError: Error {
     case invalidResponse
     case noData
     case decodingError(Error)
-    case apiError(APIErrorResponse)
     case unknown
 }
 

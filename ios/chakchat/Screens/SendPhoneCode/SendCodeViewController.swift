@@ -157,15 +157,16 @@ final class SendCodeViewController: UIViewController {
     @objc
     private func dismissKeyboard() {
         view.endEditing(true)
-        print("Touch")
     }
     
     @objc
     private func sendButtonPressed() {
+        let cleanedPhone = inputNumberTextField.text!.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+
         if isPhoneNubmerInputValid {
             interactor.sendCodeRequest(
                 SendCodeModels.SendCodeRequest(
-                    phone: inputNumberTextField.text!)
+                    phone: cleanedPhone)
             )
         } else {
             print("Input correct phone number")

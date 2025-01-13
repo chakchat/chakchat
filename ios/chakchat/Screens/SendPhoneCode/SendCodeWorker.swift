@@ -35,9 +35,12 @@ final class SendCodeWorker: SendCodeWorkerLogic {
                         completion(.failure(Keychain.KeychainError.saveError))
                     }
                 case .failure(let apiError):
-                    if case .apiError(let apiErrorResponse) = apiError {
+                    if apiError is APIErrorResponse {
+                        guard let apiErrorResponse = apiError as? APIErrorResponse else { return }
                         if apiErrorResponse.errorType == ApiErrorType.userNotFound.rawValue {
                             self.sendUpRequest(request, completion: completion)
+                        } else {
+                            completion(.failure(apiErrorResponse))
                         }
                     } else {
                         completion(.failure(apiError))
