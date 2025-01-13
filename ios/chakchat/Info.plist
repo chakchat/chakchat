@@ -4,7 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>RobotoMono-VariableFont_wght.ttf</string>
 		<string>Micro5-Regular.ttf</string>
+		<string>Montserrat-VariableFont_wght.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
