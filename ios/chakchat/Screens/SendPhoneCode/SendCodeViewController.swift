@@ -157,7 +157,6 @@ final class SendCodeViewController: UIViewController {
     @objc
     private func dismissKeyboard() {
         view.endEditing(true)
-        print("Touch")
     }
     
     @objc
