@@ -15,13 +15,14 @@ final class SendCodeViewController: UIViewController {
         static let chakLabelText: String = "Chak"
         static let chatLabelText: String = "Chat"
         
-        static let customFont: UIFont = UIFont(name: "Micro5-Regular", size: 150)!
+        static let chakchatFont: UIFont = UIFont(name: "Micro5-Regular", size: 150)!
+        static let inputPhoneFont: UIFont = UIFont(name: "RobotoMono-Regular", size: 28)!
         
         static let chakchatStackViewSpacing: CGFloat = -50
         static let inputNumberLabelFontSize: CGFloat = 16
         static let inputNumberLabelTopAnchor: CGFloat = 100
         
-        static let inputNumberTextFieldPlaceholder: String = "Phone"
+        static let inputNumberTextFieldPlaceholder: String = "+7 000 000 0000"
         static let inputNumberTextFieldTopAnchor: CGFloat = 50
         static let inputNumberTextFieldHeight: CGFloat = 60
         static let inputNumberTextFieldWidth: CGFloat = 300
@@ -44,7 +45,7 @@ final class SendCodeViewController: UIViewController {
     private lazy var chakLabel: UILabel = UILabel()
     private lazy var chatLabel: UILabel = UILabel()
     private lazy var chakchatStackView = UIStackView(arrangedSubviews: [chakLabel, chatLabel])
-    private lazy var inputNumberTextField: UITextField = UITextField()
+    private lazy var inputNumberTextField: PhoneNumberTextField = PhoneNumberTextField()
     private lazy var sendButton: UIButton = UIButton(type: .system)
     private lazy var sendButtonGradientLayer: CAGradientLayer = CAGradientLayer()
     
@@ -76,6 +77,7 @@ final class SendCodeViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        self.navigationItem.hidesBackButton = true
         configureChakChatStackView()
         configureInputNumberTextField()
         configureInputButton()
@@ -86,12 +88,12 @@ final class SendCodeViewController: UIViewController {
         view.addSubview(chatLabel)
         chakLabel.text = Constants.chakLabelText
         chakLabel.textAlignment = .center
-        chakLabel.font = Constants.customFont
+        chakLabel.font = Constants.chakchatFont
         chakLabel.textColor = .black
         
         chatLabel.text = Constants.chatLabelText
         chatLabel.textAlignment = .center
-        chatLabel.font = Constants.customFont
+        chatLabel.font = Constants.chakchatFont
         chatLabel.textColor = .black
         
         view.addSubview(chakchatStackView)
@@ -109,6 +111,7 @@ final class SendCodeViewController: UIViewController {
         inputNumberTextField.setHeight(Constants.inputNumberTextFieldHeight)
         inputNumberTextField.setWidth(Constants.inputNumberTextFieldWidth)
         inputNumberTextField.pinCentreX(view)
+        inputNumberTextField.keyboardType = .numberPad
         inputNumberTextField.borderStyle = .roundedRect
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.inputNumberTextFieldPaddingWidth, height: inputNumberTextField.frame.height))
         inputNumberTextField.leftView = paddingView
@@ -154,6 +157,7 @@ final class SendCodeViewController: UIViewController {
     @objc
     private func dismissKeyboard() {
         view.endEditing(true)
+        print("Touch")
     }
     
     @objc
@@ -172,3 +176,74 @@ final class SendCodeViewController: UIViewController {
 extension SendCodeViewController: UITextFieldDelegate {
     // hello world
 }
+
+class PhoneNumberTextField: UITextField, UITextFieldDelegate {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    private func setup() {
+        self.keyboardType = .numberPad
+        self.text = "+7"
+        self.delegate = self
+        self.font = SendCodeViewController.Constants.inputPhoneFont
+        self.addTarget(self, action: #selector(formatPhoneNumber), for: .editingChanged)
+    }
+    
+    @objc private func formatPhoneNumber() {
+        guard let text = self.text else { return }
+        
+        let rawNumber = text.replacingOccurrences(of: "\\D", with: "", options: .regularExpression)
+        
+        guard rawNumber.hasPrefix("7") else {
+            self.text = "+7"
+            return
+        }
+
+        var formattedNumber = "+7"
+        
+        if rawNumber.count > 1 {
+            formattedNumber += "("
+            let startIndex = rawNumber.index(rawNumber.startIndex, offsetBy: 1)
+            let endIndex = rawNumber.index(startIndex, offsetBy: min(3, rawNumber.count - 1))
+            formattedNumber += rawNumber[startIndex..<endIndex]
+        }
+        if rawNumber.count > 4 {
+            formattedNumber += ")"
+            let startIndex = rawNumber.index(rawNumber.startIndex, offsetBy: 4)
+            let endIndex = rawNumber.index(startIndex, offsetBy: min(3, rawNumber.count - 4))
+            formattedNumber += rawNumber[startIndex..<endIndex]
+        }
+        if rawNumber.count > 7 {
+            formattedNumber += "-"
+            let startIndex = rawNumber.index(rawNumber.startIndex, offsetBy: 7)
+            let endIndex = rawNumber.index(startIndex, offsetBy: min(2, rawNumber.count - 7))
+            formattedNumber += rawNumber[startIndex..<endIndex]
+        }
+        if rawNumber.count > 9 {
+            formattedNumber += "-"
+            let startIndex = rawNumber.index(rawNumber.startIndex, offsetBy: 9)
+            let endIndex = rawNumber.index(startIndex, offsetBy: min(2, rawNumber.count - 9))
+            formattedNumber += rawNumber[startIndex..<endIndex]
+        }
+        
+        self.text = formattedNumber
+    }
+    
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        _ = textField.text ?? ""
+        if range.location < 4 {
+            return false
+        }
+        return true
+    }
+}
+
